@@ -4,19 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TestResults from './pages/Sarah/TestResults';
 
-const FruitScreen = () => (
-  <View>
-    <Text>Fruit</Text>
-  </View>
-);
-
-const VegScreen = () => (
-  <View>
-    <Text>Veg</Text>
-  </View>
-);
-
-const TestResults = () => (
+const TestResultsScreen = () => (
   <View>
     <TestResults />
   </View>
@@ -28,9 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Fruit" component={FruitScreen} />
-        <Stack.Screen name="Veg" component={VegScreen} />
-        <Stack.Screen name="TestResults" component={TestResults} />
+        <Stack.Screen name="TestResults" component={TestResultsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
