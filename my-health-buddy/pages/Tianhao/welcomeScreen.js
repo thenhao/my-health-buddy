@@ -7,25 +7,40 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function LoginScreen() {
 
+    const navigation = useNavigation();
+
+    function handleViewMc(){
+        navigation.navigate("ViewMC");
+    }
+
+    function handleViewTestResults(){
+        navigation.navigate("TestResults");
+    }
+
+    function handleViewHealthTips(){
+        //navigation.navigate("HealthTips");
+    }
+    
+
     return(
         <SafeAreaView>
-            <TouchableOpacity style={styles.loginBtn} onPress={handle}>
+            <TouchableOpacity style={styles.loginBtn} onPress={handleViewMc}>
             {/* button to for View MC */}
                 <Text style={styles.text}>View MC</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
+            <TouchableOpacity style={styles.loginBtn} onPress={handleViewTestResults}>
             {/* button to for View Test Results */}
                 <Text style={styles.text}>View Test Results</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
+            <TouchableOpacity style={styles.loginBtn} onPress={handleViewHealthTips}>
             {/* button to for View Health Tips */}
                 <Text style={styles.text}>View Health Tips</Text>
             </TouchableOpacity>
         </SafeAreaView>
       );
-      }
+}
 
 
 
