@@ -2,30 +2,36 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import LoginScreen from "./pages/Tianhao/loginScreen";
+import TestResults from './pages/Sarah/TestResults';
+import ViewMC from "./pages/Regina/view-mc";
 
-const FruitScreen = () => (
+
+const TestResultsScreen = () => (
   <View>
-    <Text>Fruit</Text>
+    <TestResults />
   </View>
 );
 
-const VegScreen = () => (
+const ViewMCScreen = () => {
   <View>
-    <Text>Veg</Text>
+    <ViewMC />
   </View>
-);
+}
+
+//<LoginScreen/>
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    // <NavigationContainer>
-    //   <Stack.Navigator>
-    //     <Stack.Screen name="Fruit" component={FruitScreen} />
-    //     <Stack.Screen name="Veg" component={VegScreen} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
-    <LoginScreen/>
+
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="TestResults" component={TestResultsScreen} />
+        <Stack.Screen name="ViewMC" component={ViewMCScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
