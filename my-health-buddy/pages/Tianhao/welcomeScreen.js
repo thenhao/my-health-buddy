@@ -9,7 +9,20 @@ export default function LoginScreen() {
 
     return(
         <SafeAreaView>
+            <TouchableOpacity style={styles.loginBtn} onPress={handle}>
+            {/* button to for View MC */}
+                <Text style={styles.text}>View MC</Text>
+            </TouchableOpacity>
 
+            <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
+            {/* button to for View Test Results */}
+                <Text style={styles.text}>View Test Results</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
+            {/* button to for View Health Tips */}
+                <Text style={styles.text}>View Health Tips</Text>
+            </TouchableOpacity>
         </SafeAreaView>
       );
       }
