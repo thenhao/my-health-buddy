@@ -105,7 +105,7 @@ export default function LoginScreen() {
   useEffect(() => {
     if(isLoading===false && error === false){
       if(!firstTime){
-        navigation.navigate("ViewMC");
+        navigation.navigate("WelcomeScreenTest");
       } 
     }
   },  [isLoading]);
@@ -170,7 +170,8 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1
+      flex: 1,
+      backgroundColor:'white',
     },
     ModalContainer: {
       color:'white',
