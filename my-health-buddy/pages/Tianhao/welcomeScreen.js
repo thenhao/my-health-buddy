@@ -5,16 +5,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // import LottieView from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export default function LoginScreen() {
+export default function WelcomeScreen() {
 
     const navigation = useNavigation();
 
     function handleViewMc(){
-        navigation.navigate("ViewMC");
+        navigation.navigate("ViewMCTest");
     }
 
     function handleViewTestResults(){
-        navigation.navigate("TestResults");
+        navigation.navigate("TestResultsTest");
     }
 
     function handleViewHealthTips(){

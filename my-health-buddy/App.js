@@ -4,38 +4,26 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import LoginScreen from "./pages/Tianhao/loginScreen";
+import WelcomeScreen from "./pages/Tianhao/welcomeScreen";
 import TestResults from './pages/Sarah/TestResults';
 import ViewMC from "./pages/Regina/view-mc";
 
-const TestResultsScreen = () => (
 
+const TestResultsScreen = () => {
+  return(
     <View>
       <TestResults />
     </View>
-);
-
+  );
+}
 
 const ViewMCScreen = () => {
+  return(
     <View>
       <ViewMC />
     </View>
+  );
 }
-
-// const TestResultsScreen = () => {
-//   return(
-//     <View>
-//       <TestResults />
-//     </View>
-//   );
-// }
-
-// const ViewMCScreen = () => {
-//   return(
-//     <View>
-//       <ViewMC />
-//     </View>
-//   );
-// }
 
 const ViewLoginScreen = () => {
   return(
@@ -54,8 +42,9 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="LoginScreenMain">
         <Stack.Screen name="LoginScreenMain" component={LoginScreen} />
-        <Stack.Screen name="TestResults" component={TestResultsScreen} />
-        <Stack.Screen name="ViewMC" component={ViewMCScreen} />
+        <Stack.Screen name="TestResultsTest" component={TestResults} />
+        <Stack.Screen name="ViewMCTest" component={ViewMC} />
+        <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen}/>
         
         
       </Stack.Navigator>

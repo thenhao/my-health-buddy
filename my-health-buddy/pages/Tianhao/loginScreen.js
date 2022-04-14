@@ -105,7 +105,7 @@ export default function LoginScreen() {
   useEffect(() => {
     if(isLoading===false && error === false){
       if(!firstTime){
-        navigation.navigate("ViewMC");
+        navigation.navigate("WelcomeScreenTest");
       } 
     }
   },  [isLoading]);
