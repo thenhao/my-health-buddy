@@ -3,12 +3,9 @@ import { StyleSheet, View, Button, Image, SafeAreaView, TouchableOpacity, Animat
 import { TextInput ,Text, ActivityIndicator, BottomNavigation} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LottieView from "lottie-react-native";
-import Constants from 'expo-constants';
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
 
-// export default function LoginScreen({navigation}) {
-export default function LoginScreen({navigation}) {
+export default function LoginScreen() {
   //default values
   const defaultValue = '';
   //default user and password values
@@ -27,7 +24,7 @@ export default function LoginScreen({navigation}) {
   
   const [isLoading, setIsLoading] = useState(false);
   //modal visible/ not visible state
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [firstTime, setfirstTime] = useState(true);
 
 
    const handleModal = () => {
@@ -35,7 +32,8 @@ export default function LoginScreen({navigation}) {
     }
 
   function handleLogin(){
-    
+
+    setfirstTime(false);
     //check for blank username
     if(!username){
         setBlankUser(true);
@@ -102,12 +100,13 @@ export default function LoginScreen({navigation}) {
     }
   },  [isLoading]);
 
+  const navigation = useNavigation();
+
   useEffect(() => {
     if(isLoading===false && error === false){
-      // setTimeout(()=>{
-      //   setIsLoading(false);
-      // },2500)
-      // navigation.navigate('welcomeScreen');
+      if(!firstTime){
+        navigation.navigate("ViewMC");
+      } 
     }
   },  [isLoading]);
 
@@ -119,15 +118,14 @@ export default function LoginScreen({navigation}) {
     
   }, [isLoading]);
 
-  return (
+  return(
     <>
     {
       isLoading ? (<View style = {styles.ModalContainer}>
        <LottieView source={require("./assets/loadingHealthIcon.json")}  style={styles.animation} loop renderMode={"SOFTWARE"} ref={lottieRef} /> 
        {/* <ActivityIndicator animating={true} size={120} color={'#33C3B9'} style={styles.indicator}/> */}
     </View> 
-    ):
-    <SafeAreaView style={styles.container}>
+    ):(<SafeAreaView style={styles.container}>
         <Image source={{uri:'https://i.ibb.co/31bnJJN/logo.jpg'}} style={{width:190, height: 120, justifyContent: 'center', alignSelf:'center'}}></Image>
         
         {/* For username text input. Checking of blank username*/}
@@ -164,11 +162,11 @@ export default function LoginScreen({navigation}) {
             <Ionicons name="ios-information-circle" size={30} color="red"/>
             <Text style={styles.errorTextSummary}>Please check your username and password</Text>
         </View> : null }
-    </SafeAreaView>
+    </SafeAreaView>)
     }
     </>
   );
-}
+  }
 
 const styles = StyleSheet.create({
     container: {
@@ -249,3 +247,5 @@ const styles = StyleSheet.create({
     },
   });
   
+
+  // export default LoginScreen;

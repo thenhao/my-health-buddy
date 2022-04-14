@@ -7,20 +7,44 @@ import LoginScreen from "./pages/Tianhao/loginScreen";
 import TestResults from './pages/Sarah/TestResults';
 import ViewMC from "./pages/Regina/view-mc";
 
-
 const TestResultsScreen = () => (
-  <View>
-    <TestResults />
-  </View>
+
+    <View>
+      <TestResults />
+    </View>
 );
 
+
 const ViewMCScreen = () => {
-  <View>
-    <ViewMC />
-  </View>
+    <View>
+      <ViewMC />
+    </View>
 }
 
-//<LoginScreen/>
+// const TestResultsScreen = () => {
+//   return(
+//     <View>
+//       <TestResults />
+//     </View>
+//   );
+// }
+
+// const ViewMCScreen = () => {
+//   return(
+//     <View>
+//       <ViewMC />
+//     </View>
+//   );
+// }
+
+const ViewLoginScreen = () => {
+  return(
+    <View>
+      <LoginScreen/>
+    </View>
+  );  
+}
+
 
 const Stack = createNativeStackNavigator();
 
@@ -28,9 +52,12 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="LoginScreenMain">
+        <Stack.Screen name="LoginScreenMain" component={LoginScreen} />
         <Stack.Screen name="TestResults" component={TestResultsScreen} />
         <Stack.Screen name="ViewMC" component={ViewMCScreen} />
+        
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
