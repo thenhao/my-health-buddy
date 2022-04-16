@@ -17,23 +17,11 @@ const ViewMCModal = (props) => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <DataTable>
-              <DataTable.Header>
-                <DataTable.Title>MC ID</DataTable.Title>
-                <DataTable.Title>Clinic</DataTable.Title>
-                <DataTable.Title>Start Date</DataTable.Title>
-                <DataTable.Title>End Date</DataTable.Title>
-                <DataTable.Title>Duration</DataTable.Title>
-              </DataTable.Header>
-
-              <DataTable.Row>
-                <DataTable.Cell>{props.mcId}</DataTable.Cell>
-                <DataTable.Cell>{props.clinic}</DataTable.Cell>
-                <DataTable.Cell>{props.mcStart}</DataTable.Cell>
-                <DataTable.Cell>{props.mcEnd}</DataTable.Cell>
-                <DataTable.Cell>{props.mcDuration}</DataTable.Cell>
-              </DataTable.Row>
-            </DataTable>
+            <Text>MC ID: {props.mcId}</Text>
+            <Text>Clinic Visited: {props.clinic}</Text>
+            <Text>MC Start Date: {props.mcStart}</Text>
+            <Text>MC End Date: {props.mcEnd}</Text>
+            <Text>MC Duration: {props.mcDuration}</Text>
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
