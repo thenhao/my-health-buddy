@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import { DataTable } from "react-native-paper";
 
 const ViewMCModal = (props) => {
 
@@ -16,7 +17,19 @@ const ViewMCModal = (props) => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>A table should be placed here</Text>
+            <DataTable>
+              <DataTable.Header>
+                <DataTable.Title></DataTable.Title>
+                <DataTable.Title></DataTable.Title>
+                <DataTable.Title></DataTable.Title>
+              </DataTable.Header>
+
+              <DataTable.Row>
+                <DataTable.Cell></DataTable.Cell>
+                <DataTable.Cell></DataTable.Cell>
+                <DataTable.Cell></DataTable.Cell>
+              </DataTable.Row>
+            </DataTable>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => props.setModalVisible(!props.modalVisible)}
