@@ -27,7 +27,7 @@ const ViewMCScreen = () => {
 
 const ViewLoginScreen = () => {
   return(
-    <View>
+    <View style={styles.container}>
       <LoginScreen/>
     </View>
   );  
@@ -40,8 +40,8 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreenMain">
-        <Stack.Screen name="LoginScreenMain" component={LoginScreen} />
+      <Stack.Navigator initialRouteName="LoginScreen">
+        <Stack.Screen options={{headerShown: false}} name="LoginScreen" component={ViewLoginScreen} />
         <Stack.Screen name="TestResultsTest" component={TestResults} />
         <Stack.Screen name="ViewMCTest" component={ViewMC} />
         <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen}/>
@@ -51,3 +51,14 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor:'white',
+    width:'100%',
+    height:'100%',
+    // borderWidth:1
+  }
+});
