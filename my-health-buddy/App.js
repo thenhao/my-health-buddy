@@ -44,7 +44,7 @@ export default function App() {
         <Stack.Screen options={{headerShown: false}} name="LoginScreen" component={ViewLoginScreen} />
         <Stack.Screen name="TestResultsTest" component={TestResults} />
         <Stack.Screen name="ViewMCTest" component={ViewMC} />
-        <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen}/>
+        <Stack.Screen options={{headerShown: false}} name="WelcomeScreenTest" component={WelcomeScreen}/>
         
         
       </Stack.Navigator>

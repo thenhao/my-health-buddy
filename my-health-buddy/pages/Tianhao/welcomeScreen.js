@@ -4,6 +4,8 @@ import { TextInput ,Text, ActivityIndicator, BottomNavigation} from 'react-nativ
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import LottieView from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
+import logoutImg from "./assets/loginIcon.jpeg"
+import LogoutButton from "./logout";
 
 export default function WelcomeScreen() {
 
@@ -20,10 +22,29 @@ export default function WelcomeScreen() {
     function handleViewHealthTips(){
         //navigation.navigate("HealthTips");
     }
+
+    function handleLogout(){
+      navigation.navigate("LoginScreen");
+  }
     
 
     return(
-        <SafeAreaView>
+      <>
+      {/* View to load the two layer of the screen*/}
+        <View style={styles.upperContainer}></View>
+        <View style={styles.lowerContainer}></View>
+
+        <SafeAreaView style={styles.navigationContainer}>
+
+            <Text style={styles.titleText}>Welcome to Good For Health</Text>
+
+            {/* <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}> */}
+            {/* button for logout */}
+                {/* <Text style={styles.text}>View MC</Text> */}
+                {/* <Ionicons name="ios-person-circle-outline" size={50} color="white"/>
+            </TouchableOpacity> */}
+            <LogoutButton/>
+
             <TouchableOpacity style={styles.loginBtn} onPress={handleViewMc}>
             {/* button to for View MC */}
                 <Text style={styles.text}>View MC</Text>
@@ -39,6 +60,7 @@ export default function WelcomeScreen() {
                 <Text style={styles.text}>View Health Tips</Text>
             </TouchableOpacity>
         </SafeAreaView>
+      </>
       );
 }
 
@@ -48,31 +70,51 @@ export default function WelcomeScreen() {
       const styles = StyleSheet.create({
         container: {
           flex: 1,
-          backgroundColor:'white',
+          backgroundColor:'#00ffff',
         },
-        ModalContainer: {
-          color:'white',
+        upperContainer: {
+          backgroundColor:'#33C3B9',
+          width:'100%',
+          height: '40%'
+        },
+        lowerContainer: {
           backgroundColor:'white',
           width:'100%',
-          height: '90%',
-          justifyContent:"center"
+          height: '60%',
         },
-        userAndPasswordContainer: {
-            flexDirection:"row",
-            flexWrap:"wrap",
-            alignItems:'center',
-            paddingLeft:10,
-            // paddingBottom:28,
+        navigationContainer: {
+          position: 'absolute',
+          marginTop: '0%',
+          width: '100%',
+          borderWidth: 1
+        },
+        titleText: {
+            fontSize: 40,
+            fontWeight: 'bold',
+            color:'white',
+            width: '70%',
+            padding:'5%',
+            alignContent:'center',
+            justifyContent: 'center',
+            marginTop:'5%'
             // borderWidth:1
         },
-        userAndPasswordContainerEmpty: {
-          width: '100%',
-          height: '4.2%',
+        logoutBtn:{
+          width:'18%',
+          //borderRadius:25,
+          //height:50,
+          alignItems:"center",
+          justifyContent:"center",
+          marginTop:'11%',
+          marginLeft:'80%',
+          // borderWidth: 1,
+          position: "absolute"
+          // backgroundColor:"#33C3B9",
       },
         text: {
           fontSize: 18,
           fontWeight: 'bold',
-          color:'white'
+          color:'white',
         },
         image: {
             height:'10%',
