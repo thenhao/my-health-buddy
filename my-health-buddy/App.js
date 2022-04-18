@@ -43,7 +43,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="LoginScreenMain">
         <Stack.Screen name="LoginScreenMain" component={LoginScreen} />
         <Stack.Screen name="TestResultsTest" component={TestResults} />
-        <Stack.Screen screenOptions={{headerShown: false}} name="ViewMCTest" component={ViewMC} />
+        <Stack.Screen name="ViewMCTest" component={ViewMC} />
         <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen}/>
         
         
