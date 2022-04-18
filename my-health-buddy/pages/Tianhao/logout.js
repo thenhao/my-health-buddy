@@ -9,9 +9,9 @@ import logoutImg from "./assets/loginIcon.jpeg"
 export default function LogoutButton() {
 
     const navigation = useNavigation();
-
+    const defaultValue = '';
     function handleLogout(){
-      navigation.navigate("LoginScreen");
+      navigation.navigate("LoginScreen", {user: defaultValue, pass: defaultValue, logout:true});
   }
     
 

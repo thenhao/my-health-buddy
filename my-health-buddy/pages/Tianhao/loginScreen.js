@@ -3,7 +3,7 @@ import { StyleSheet, View, Button, Image, SafeAreaView, TouchableOpacity, Animat
 import { TextInput ,Text, ActivityIndicator, BottomNavigation} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LottieView from "lottie-react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 export default function LoginScreen() {
   //default values
@@ -25,11 +25,11 @@ export default function LoginScreen() {
   const [isLoading, setIsLoading] = useState(false);
   //modal visible/ not visible state
   const [firstTime, setfirstTime] = useState(true);
+  //logoout
+  const [isLogout, setIsLogout] = useState(true);
 
 
-   const handleModal = () => {
-      setIsModalVisible(() => !isModalVisible);
-    }
+  
 
   function handleLogin(){
 
@@ -69,6 +69,7 @@ export default function LoginScreen() {
             //set found is true. // Pass it down from the app ??
             //navigate to the holding screen
             setError(false);
+            setIsLogout(false);
         }else{
             console.log('password not found');
             setError(true);
@@ -79,6 +80,15 @@ export default function LoginScreen() {
         setError(true);
     }
 }
+  // const route = useRoute();
+  // const {user} = route.params;
+  //  console.log(user);
+  // useEffect(() => {
+  //   if(route.params.logout){
+  //     setUsername(route.params.user);
+  //     setPassword(route.params.pass);
+  //   }
+  // },  [route]);
 
   useEffect(() => {
     if(username.length > 0){
@@ -103,9 +113,13 @@ export default function LoginScreen() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    if(isLoading===false && error === false){
+    if(isLoading===false && error === false && isLogout === false){
       if(!firstTime){
-        navigation.navigate("WelcomeScreenTest");
+        navigation.navigate("WelcomeScreenTest", {user: username});
+        // setTimeout(()=>{
+        //   setIsLogout(false);
+        // },2600)
+        
       } 
     }
   },  [isLoading]);
@@ -117,6 +131,24 @@ export default function LoginScreen() {
     }
     
   }, [isLoading]);
+
+  //defining route to use it to take in params
+  //this checks the routes whether it was sent or not
+  //If other screen send params, route is not undefined and undefined means value not sent from other screen
+  const route = useRoute();
+  console.log(route);
+  useEffect(() => { 
+    if(route.params === undefined){
+      console.log('here');
+    }else{
+      setIsLogout(true);
+      console.log('route has value and not undefined');
+      setUsername(route.params.user);
+      setPassword(route.params.pass);     
+    };
+    
+  }, [route]);
+
 
   return(
     <>
