@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import ViewMCModal from "./view-mc-modal";
+import HeaderBar from "../Tianhao/headerBar";
 
 const DATA = [
   {
@@ -38,6 +39,7 @@ const ViewMC = () => {
     const color = item.id === selectedId ? 'black' : 'white';
 
     return (
+      
       <Item
         item={item}
         onPress={() => {
@@ -53,6 +55,8 @@ const ViewMC = () => {
   };
 
   return (
+    <>
+    <HeaderBar/>
     <SafeAreaView style={styles.container}>
       <FlatList
         data={DATA}
@@ -61,6 +65,8 @@ const ViewMC = () => {
         extraData={selectedId}
       />
     </SafeAreaView>
+    </>
+    
   );
 };
 

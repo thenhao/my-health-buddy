@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, View, Button, Image, SafeAreaView, TouchableOpacity, Animated, FlatList} from "react-native";
 import { TextInput ,Text, ActivityIndicator, BottomNavigation, Card} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import LottieView from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
 import logoutImg from "./assets/loginIcon.jpeg"
@@ -10,6 +11,8 @@ import mc from "./assets/mc.jpeg"
 import templateMc from "./assets/templatemc.jpeg"
 import testMc from "./assets/testmc.png"
 import LogoutButton from "./logout";
+
+
 const testMcImageUri = Image.resolveAssetSource(testMc).uri
 // const testMc = require("./assets/testmc.png");
 
@@ -60,6 +63,8 @@ const Item = ({ title, link, onPress }) => (
 //     <Text style={styles.title}>{title}</Text>
 //   </View>
 // );
+
+const Tab = createBottomTabNavigator();
 
 export default function WelcomeScreen({route}) {
     const {user} = route.params;
