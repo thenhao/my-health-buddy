@@ -65,7 +65,7 @@ const DATA = [
   
 ];
 
-const Item = ({ item, onPress, backgroundColor, textColor, modalVisible, setModalVisible, selectedId }) => (
+const Item = ({ item, onPress, backgroundColor, textColor, modalVisible, setModalVisible, selectedId, setSelectedId }) => (
   <>
     <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
       <Text style={[styles.title, textColor]}>MC ID: {item.mc_id} {'\n'}Date of MC: {item.mc_startDate}</Text>
@@ -73,7 +73,8 @@ const Item = ({ item, onPress, backgroundColor, textColor, modalVisible, setModa
     {item.id === selectedId && 
       <ViewMCModal 
         modalVisible={modalVisible} 
-        setModalVisible={setModalVisible} 
+        setModalVisible={setModalVisible}
+        setSelectedId={setSelectedId}
         itemId={item.id} mcId={item.mc_id} 
         clinic={item.clinic} 
         mcDuration={item.mc_duration} 
@@ -113,6 +114,7 @@ const ViewMC = () => {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         selectedId={selectedId}
+        setSelectedId={setSelectedId}
       />
     );
   };

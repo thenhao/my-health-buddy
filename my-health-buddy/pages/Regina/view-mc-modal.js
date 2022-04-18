@@ -40,6 +40,7 @@ const ViewMCModal = (props) => {
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
                 props.setModalVisible(!props.modalVisible);
+                props.setSelectedId(null);
                 console.log('Modal has been closed.')}
               }
             >
