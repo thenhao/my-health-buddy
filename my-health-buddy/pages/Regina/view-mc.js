@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 
 import ViewMCModal from "./view-mc-modal";
 
@@ -76,6 +78,14 @@ const ViewMC = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
+  let [fontsLoaded] = useFonts({
+    'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? "aquamarine" : "#33C3B9";
     const color = item.id === selectedId ? 'black' : 'white';
@@ -128,6 +138,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
+    fontFamily: 'OpenSans-Regular'
   },
 });
 

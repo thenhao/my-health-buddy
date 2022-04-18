@@ -1,11 +1,20 @@
-import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View, Dimensions } from "react-native";
-import { DataTable } from "react-native-paper";
+import React from "react";
+import { Modal, StyleSheet, Text, Pressable, View, Dimensions } from "react-native";
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const ViewMCModal = (props) => {
+
+  let [fontsLoaded] = useFonts({
+    'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <View style={styles.centeredView}>
@@ -88,6 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#2196F3",
   },
   textStyle: {
+    fontFamily: 'OpenSans-Regular',
     color: "white",
     fontWeight: "bold",
     textAlign: "center"
@@ -95,6 +105,7 @@ const styles = StyleSheet.create({
   modalContent: {
     fontSize: 15,
     fontWeight: 'bold',
+    fontFamily: 'OpenSans-Regular',
     borderBottomWidth: 1,
     borderBottomColor: 'black',
     paddingBottom: 10,
