@@ -2,21 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, View, Button, Image, SafeAreaView, TouchableOpacity, Animated, FlatList} from "react-native";
 import { TextInput ,Text, ActivityIndicator, BottomNavigation, Card} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import LottieView from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
-import logoutImg from "./assets/loginIcon.jpeg"
-import mcBanner from "./assets/mcbanner.jpeg"
-import mc from "./assets/mc.jpeg"
-import templateMc from "./assets/templatemc.jpeg"
-import testMc from "./assets/testmc.png"
 import LogoutButton from "./logout";
 
-
-const testMcImageUri = Image.resolveAssetSource(testMc).uri
-// const testMc = require("./assets/testmc.png");
-
-const IMAGES = [{mcImage: require('./assets/testmc.png')}]
 
 const DATA = [
   {
@@ -65,6 +56,22 @@ const Item = ({ title, link, onPress }) => (
 // );
 
 const Tab = createBottomTabNavigator();
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home!</Text>
+    </View>
+  );
+}
+
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
 
 export default function WelcomeScreen({route}) {
     const {user} = route.params;
@@ -119,6 +126,13 @@ export default function WelcomeScreen({route}) {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
+
+      <NavigationContainer independent={true}>
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Settings" component={SettingsScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
     </SafeAreaView>
         
     </>
