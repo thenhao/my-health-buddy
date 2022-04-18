@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 
 import ViewMCModal from "./view-mc-modal";
 
@@ -28,6 +28,39 @@ const DATA = [
     mc_startDate: '26th May 2020',
     mc_endDate: '28th May 2020'
   },
+  {
+    id: "3358761d-c7d9-4b5f-8372-a218b7ffede8",
+    mc_id: '760',
+    clinic: "Third Clinic",
+    mc_duration: '3 days',
+    mc_startDate: '26th Sep 2019',
+    mc_endDate: '28th Sep 2019'
+  },
+  {
+    id: "5dfb5157-869e-4259-ba08-3a34cb4faf95",
+    mc_id: '699',
+    clinic: "Second Clinic",
+    mc_duration: '2 days',
+    mc_startDate: '14th Jun 2019',
+    mc_endDate: '14th Jun 2019'
+  },
+  {
+    id: "35c53d0b-fd2d-45d4-98be-94c31c0d85f1",
+    mc_id: '604',
+    clinic: "First Clinic",
+    mc_duration: '1 day',
+    mc_startDate: '12th Jan 2019',
+    mc_endDate: '13th Jan 2019'
+  },
+  {
+    id: "8716c05a-0698-4ac9-821c-d54ac7354a2d",
+    mc_id: '542',
+    clinic: "First Clinic",
+    mc_duration: '5 days',
+    mc_startDate: '12th Jul 2018',
+    mc_endDate: '16th Jul 2018'
+  },
+  
 ];
 
 const Item = ({ item, onPress, backgroundColor, textColor, modalVisible, setModalVisible, selectedId }) => (
@@ -53,6 +86,7 @@ const ViewMC = () => {
         onPress={() => {
           setSelectedId(item.id);
           setModalVisible(true);
+          console.log('Modal has been opened');
         }}
         backgroundColor={{ backgroundColor }}
         textColor={{ color }}
