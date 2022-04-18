@@ -10,6 +10,7 @@ const ViewMCModal = (props) => {
 
   let [fontsLoaded] = useFonts({
     'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
+    'OpenSans-Bold': require('../../src/assets/fonts/OpenSans-Bold.ttf'),
   });
 
   if (!fontsLoaded) {
@@ -29,7 +30,7 @@ const ViewMCModal = (props) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalContent}>MC ID: {props.mcId}</Text>
-            <Text style={styles.modalContent}>Clinic Visited: {props.clinic}</Text>
+            <Text style={styles.modalContent}>Clinic: {props.clinic}</Text>
             <Text style={styles.modalContent}>Date Visted: {props.mcStart}</Text>
             <Text style={styles.modalContent}>MC Start Date: {props.mcStart}</Text>
             <Text style={styles.modalContent}>MC End Date: {props.mcEnd}</Text>
@@ -67,6 +68,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: '80%',
+    backgroundColor: 'black',
+    opacity: 0.8
   },
   modalView: {
     backgroundColor: "white",
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
     padding: 35,
     marginTop: 0.05*windowHeight,
     height: 0.6*windowHeight,
-    width: 0.75*windowWidth,
+    width: 0.8*windowWidth,
     justifyContent: 'center',
     alignItems: "center",
     shadowColor: "#000",
@@ -99,13 +102,11 @@ const styles = StyleSheet.create({
   textStyle: {
     fontFamily: 'OpenSans-Regular',
     color: "white",
-    fontWeight: "bold",
     textAlign: "center"
   },
   modalContent: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    fontFamily: 'OpenSans-Regular',
+    fontSize: 13,
+    fontFamily: 'OpenSans-Bold',
     borderBottomWidth: 1,
     borderBottomColor: 'black',
     paddingBottom: 10,
