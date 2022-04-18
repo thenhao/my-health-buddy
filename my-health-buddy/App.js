@@ -7,10 +7,10 @@ import LoginScreen from "./pages/Tianhao/loginScreen";
 import WelcomeScreen from "./pages/Tianhao/welcomeScreen";
 import TestResults from './pages/Sarah/TestResults';
 import ViewMC from "./pages/Regina/view-mc";
-
+import CarouselCards from "./pages/Jeffery/HealthArticles"
 
 const TestResultsScreen = () => {
-  return(
+  return (
     <View>
       <TestResults />
     </View>
@@ -18,7 +18,7 @@ const TestResultsScreen = () => {
 }
 
 const ViewMCScreen = () => {
-  return(
+  return (
     <View>
       <ViewMC />
     </View>
@@ -26,11 +26,11 @@ const ViewMCScreen = () => {
 }
 
 const ViewLoginScreen = () => {
-  return(
+  return (
     <View>
-      <LoginScreen/>
+      <LoginScreen />
     </View>
-  );  
+  );
 }
 
 
@@ -44,9 +44,9 @@ export default function App() {
         <Stack.Screen name="LoginScreenMain" component={LoginScreen} />
         <Stack.Screen name="TestResultsTest" component={TestResults} />
         <Stack.Screen name="ViewMCTest" component={ViewMC} />
-        <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen}/>
-        
-        
+        <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen} />
+        <Stack.Screen name="HealthTips" component={CarouselCards} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
