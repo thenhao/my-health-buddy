@@ -46,7 +46,8 @@ export default function App() {
         <Stack.Screen name="ViewMCTest" component={ViewMC} />
         <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen} />
         <Stack.Screen name="HealthTips" component={CarouselCards} />
-
+        <Stack.Screen screenOptions={{ headerShown: false }} name="ViewMCTest" component={ViewMC} />
+        <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
