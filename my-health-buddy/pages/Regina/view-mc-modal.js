@@ -31,7 +31,7 @@ const ViewMCModal = (props) => {
           <View style={styles.modalView}>
             <Text style={styles.modalContent}>MC ID: {props.mcId}</Text>
             <Text style={styles.modalContent}>Clinic: {props.clinic}</Text>
-            <Text style={styles.modalContent}>Date Visted: {props.mcStart}</Text>
+            <Text style={styles.modalContent}>Date Visited: {props.mcStart}</Text>
             <Text style={styles.modalContent}>MC Start Date: {props.mcStart}</Text>
             <Text style={styles.modalContent}>MC End Date: {props.mcEnd}</Text>
             <Text style={styles.modalContent}>MC Duration: {props.mcDuration}</Text>
