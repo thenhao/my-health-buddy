@@ -193,10 +193,10 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   searchbar: {
-    width: '80%',
+    width: '90%',
     marginTop: '2%',
     marginBottom: '3%',
-    marginLeft: '10%'
+    marginLeft: '5%'
   }
 });
 
