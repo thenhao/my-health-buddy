@@ -7,7 +7,9 @@ import LoginScreen from "./pages/Tianhao/loginScreen";
 import WelcomeScreen from "./pages/Tianhao/welcomeScreen";
 import TestResults from './pages/Sarah/TestResults';
 import ViewMC from "./pages/Regina/view-mc";
-import CarouselCards from "./pages/Jeffery/HealthArticles"
+import HealthArticles from "./pages/Jeffery/HealthArticles"
+import HealthArticleSolo from "./pages/Jeffery/HealthArticleSolo"
+
 
 const TestResultsScreen = () => {
   return (
@@ -43,11 +45,11 @@ export default function App() {
       <Stack.Navigator initialRouteName="LoginScreenMain">
         <Stack.Screen name="LoginScreenMain" component={LoginScreen} />
         <Stack.Screen name="TestResultsTest" component={TestResults} />
-        <Stack.Screen name="ViewMCTest" component={ViewMC} />
         <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen} />
-        <Stack.Screen name="HealthTips" component={CarouselCards} />
+        <Stack.Screen name="HealthTips" component={HealthArticles} />
+        <Stack.Screen name="HealthArticleSolo" component={HealthArticleSolo} />
         <Stack.Screen screenOptions={{ headerShown: false }} name="ViewMCTest" component={ViewMC} />
-        <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

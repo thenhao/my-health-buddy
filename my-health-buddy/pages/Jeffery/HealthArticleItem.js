@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, Text, StyleSheet, Dimensions, Image, ImageBackground, TouchableOpacity } from "react-native"
-
+import { SafeAreaView, View, Text, StyleSheet, Dimensions, Image, ImageBackground, TouchableOpacity } from "react-native"
+import HealthArticleSolo from "./HealthArticleSolo"
+import { useNavigation } from "@react-navigation/native";
 // export const SliderWidth = Dimensions.get('window').width
 // export const ItemWidth = Math.round(SliderWidth * 1)
 
@@ -8,25 +9,29 @@ export const SliderHeight = Dimensions.get('window').height
 export const ItemHeight = Math.round(SliderHeight * 0.3)
 
 
-//The CarouselCardItem implements the look of the cards in the carousel. It returns a component that will display the item passed as props.
+//The HealthArticleItem implements the look of the cards in the carousel. It returns a component that will display the item passed as props.
 //Ref: https://blog.logrocket.com/using-react-native-to-implement-a-carousel/
+//Ref: https://snack.expo.dev/KJl_IKU3D
 
-const CarouselCardItem = ({ item, index }) => {
+const HealthArticleItem = ({ item, index }) => {
+
+    // const navigation = useNavigation();
+
+    function handleViewArticleSolo() {
+        navigation.navigate("HealthArticleSolo");
+    }
+
+
     return (
         <View style={styles.container} key={index}>
 
             <ImageBackground
                 source={{ uri: item.imgUrl }}
                 style={styles.image}>
-                <Text style={styles.header}>{item.title}</Text>
+                <Text style={styles.header} onPress={handleViewArticleSolo}>{item.title}</Text>
                 {/* <Text style={styles.body}>{item.body}</Text> */}
             </ImageBackground>
-            <TouchableOpacity
-                style={styles.button}
-                onPress={onPress}
-            >
-                <Text>Press Here</Text>
-            </TouchableOpacity>
+
         </View>
     )
 }
@@ -96,4 +101,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default CarouselCardItem
+export default HealthArticleItem;

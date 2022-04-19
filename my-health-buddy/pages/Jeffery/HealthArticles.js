@@ -1,16 +1,16 @@
 import React, { useState, useRef } from 'react'
-import { View } from "react-native"
+import { View, TouchableOpacity } from "react-native"
 import Carousel, { Pagination } from 'react-native-snap-carousel'
-import CarouselCardItem, { SliderWidth, ItemWidth, SliderHeight, ItemHeight } from './CrouselCardItem'
+import HealthArticleItem, { SliderWidth, ItemWidth, SliderHeight, ItemHeight } from './HealthArticleItem'
 import data from './data'
 
 
-//CarouselCards will be responsible for displaying the carousel. 
+//HealthArticles will be responsible for displaying the carousel. 
 //Ref: https://blog.logrocket.com/using-react-native-to-implement-a-carousel/
 
 
 
-const CarouselCards = () => {
+const HealthArticles = () => {
     const [index, setIndex] = useState(0);
     const isCarousel = useRef(null);
 
@@ -21,7 +21,7 @@ const CarouselCards = () => {
                 layoutCardOffset={9}
                 ref={isCarousel}
                 data={data}
-                renderItem={CarouselCardItem}
+                renderItem={HealthArticleItem}
                 // sliderWidth={SliderWidth}
                 // itemWidth={ItemWidth}
                 sliderHeight={SliderHeight}
@@ -31,6 +31,8 @@ const CarouselCards = () => {
                 useScrollView={true}
                 vertical={true}
             />
+
+
             <Pagination
                 dotsLength={data.length}
                 activeDotIndex={index}
@@ -51,4 +53,4 @@ const CarouselCards = () => {
     )
 }
 
-export default CarouselCards
+export default HealthArticles
