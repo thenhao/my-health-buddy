@@ -70,7 +70,7 @@ const WelcomeHomeStackScreen = () => {
   return(
       <WelcomeHomeStack.Navigator initialRouteName="WelcomeScreenTest">
         {/* <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreenNavigator}/> */}
-        <WelcomeHomeStack.Screen name="TestResultsTest" component={TestResults} />
+        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="TestResultsTest" component={TestResults} />
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} />
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest2" component={WelcomeScreen} />
       </WelcomeHomeStack.Navigator>

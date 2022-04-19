@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import HeaderBar from "../Tianhao/headerBar";
 
 const DATA = [
   {
@@ -79,6 +80,8 @@ const TestResults = () => {
   };
 
   return (
+    <>
+    <HeaderBar/>
     <SafeAreaView style={styles.container}>
       <Image
         source={{
@@ -93,6 +96,7 @@ const TestResults = () => {
         extraData={selectedId}
       />
     </SafeAreaView>
+    </>
   );
 };
 
@@ -100,6 +104,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
+    backgroundColor:'white'
   },
   item: {
     padding: 20,
