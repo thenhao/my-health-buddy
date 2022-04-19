@@ -1,13 +1,16 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LoginScreen from "./pages/Tianhao/loginScreen";
 import WelcomeScreen from "./pages/Tianhao/welcomeScreen";
 import TestResults from './pages/Sarah/TestResults';
 import ViewMC from "./pages/Regina/view-mc";
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
+//import WelcomeScreenNavigator from "./pages/Tianhao/welcomeScreenNavigator";
+import { useNavigation, useRoute} from "@react-navigation/native";
+import ProfileScreen from "./pages/Tianhao/profileScreen";
 
 const TestResultsScreen = () => {
   return(
@@ -33,18 +36,97 @@ const ViewLoginScreen = () => {
   );  
 }
 
+const Tab = createBottomTabNavigator();
+const HomeStackScreen = () => {
+  return(
+      <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = focused
+              ? 'home'
+              : 'home-outline';
+          } else if (route.name === 'Profile') {
+            iconName = focused ? 'ios-person-circle-outline' : 'ios-person-circle';
+          }
+
+          // You can return any component that you like here!
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#33C3B9',
+        tabBarInactiveTintColor: 'gray',
+      })}>
+          <Tab.Screen options={{headerShown: false, gestureEnabled: false}} name="Home" component={WelcomeHomeStackScreen}/>
+          <Tab.Screen options={{headerShown: false, gestureEnabled: false}} name="Profile" component={ProfileScreen} />
+      </Tab.Navigator>
+
+  );  
+}
+
+const WelcomeHomeStack = createNativeStackNavigator();
+const WelcomeHomeStackScreen = () => {
+  
+  return(
+      <WelcomeHomeStack.Navigator initialRouteName="WelcomeScreenTest">
+        {/* <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreenNavigator}/> */}
+        <WelcomeHomeStack.Screen name="TestResultsTest" component={TestResults} />
+        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} />
+        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest2" component={WelcomeScreen} />
+      </WelcomeHomeStack.Navigator>
+  );  
+}
+
+function ProfileStackScreen() {
+  // const route = useRoute();
+  //    console.log(route);
+  // useEffect(() => { 
+    
+  //   if(route.params === undefined){
+      
+  //     console.log('profile screen: route value not received');
+  //   }else{
+  //     console.log('profile screen:route has value and not undefined');
+  //     setName(route.params.user);
+    
+  //   };
+    
+  // }, [route]);
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
+
+
+
+// const LoginStackScreen = () => {
+//   return(
+//     <NavigationContainer>
+//       <Stack.Navigator initialRouteName="LoginScreen">
+//         {/* <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreenNavigator}/> */}
+//         <Stack.Screen options={{headerShown: false}} name="LoginScreen" component={ViewLoginScreen} />
+//         <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={HomeStackScreen}/>
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );  
+// }
+
 
 const Stack = createNativeStackNavigator();
-
+//need to do stack navigator within a tab navigator
 export default function App() {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen">
+      <Stack.Navigator name="App" initialRouteName="LoginScreen">
+        <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={HomeStackScreen}/>
         <Stack.Screen options={{headerShown: false}} name="LoginScreen" component={ViewLoginScreen} />
-        <Stack.Screen name="TestResultsTest" component={TestResults} />
-        <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} />
-        <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreen}/>
+        {/* <Stack.Screen name="TestResultsTest" component={TestResults} />
+        <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} /> */}
+        {/* <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreen}/> */}
         
         
       </Stack.Navigator>

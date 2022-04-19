@@ -1,11 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import { StyleSheet, View, Button, Image, SafeAreaView, TouchableOpacity, Animated, FlatList} from "react-native";
-import { TextInput ,Text, ActivityIndicator, BottomNavigation, Card} from 'react-native-paper';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import LottieView from "lottie-react-native";
-import { useNavigation } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View, Image, SafeAreaView, TouchableOpacity, FlatList} from "react-native";
+import { Text } from 'react-native-paper';
+import { useNavigation, useRoute} from "@react-navigation/native";
 import LogoutButton from "./logout";
 
 
@@ -33,7 +29,6 @@ const DATA = [
 const Item = ({ title, link, onPress }) => (
   
   <TouchableOpacity 
-  // style={styles.loginBtn} 
   onPress={onPress}>
     <View 
      style={styles.item}
@@ -49,52 +44,26 @@ const Item = ({ title, link, onPress }) => (
    </TouchableOpacity>
 );
 
-// const Item = ({ title }) => (
-//   <View style={styles.item}>
-//     <Text style={styles.title}>{title}</Text>
-//   </View>
-// );
-
-const Tab = createBottomTabNavigator();
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-export default function WelcomeScreen({route}) {
-    const {user} = route.params;
-    const navigation = useNavigation();
-
-    function handleViewMc(){
-        navigation.navigate("ViewMCTest");
-    }
-
-    function handleViewTestResults(){
-        navigation.navigate("TestResultsTest");
-    }
-
-    function handleViewHealthTips(){
-        //navigation.navigate("HealthTips");
-    }
-
-    function handleLogout(){
-      navigation.navigate("LoginScreen");
-  }
-
+export default function WelcomeScreen() {
+  const [name, setName] = useState('');
+  //const {user} = route.params;
+  const route = useRoute();
+  console.log(route);
+  useEffect(() => { 
+    
+    if(route.params === undefined){
+      
+      console.log('welcome screen: route value not received');
+    }else{
+      console.log('welcome screen:route has value and not undefined');
+      setName(route.params.user);
+    
+    };
+    
+  }, [route]);
   
-  
+  const navigation = useNavigation();
+
   const renderItem = ({ item }) => (
       <Item
         item={item}
@@ -109,238 +78,82 @@ export default function WelcomeScreen({route}) {
       {/* View to load the two layer of the screen*/}
         <View style={styles.upperContainer}></View>
         <View style={styles.lowerContainer}></View>
-        
-
-                  {/* <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}> */}
-                  {/* button for logout */}
-                      {/* <Text style={styles.text}>View MC</Text> */}
-                      {/* <Ionicons name="ios-person-circle-outline" size={50} color="white"/>
-                  </TouchableOpacity> */}
                   
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.titleTextUser}>Welcome To G4Health</Text>
-      <Text style={styles.titleText}>{user}</Text>
-      <LogoutButton/>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
-
-      <NavigationContainer independent={true}>
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+        <SafeAreaView style={styles.container}>
+          <Text style={styles.titleTextUser}>Welcome To G4Health</Text>
+          {/* <Text style={styles.titleText}>{user}</Text> */}
+          {name?<Text style={styles.titleText}>{name}</Text>: <Text style={styles.titleText}> </Text>}
+          <LogoutButton/>
+          <FlatList
+            data={DATA}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+          />
+        </SafeAreaView>
         
     </>
     );
 }
 
 
-
-
-      const styles = StyleSheet.create({
-        container: {
-          flex: 1,
-          //borderWidth:1,
-          position:'absolute',
-          width:'95%',
-          height:'90%',
-          marginLeft:'3%'
-          // marginTop: '40%'
-          //marginTop: StatusBar.currentHeight || 0,
-        },
-        item: {
-          backgroundColor: 'white',
-          padding: 20,
-          marginVertical: 8,
-          marginHorizontal: 16,
-          //borderWidth:1
-        },
-        title: {
-          width:'100%',
-          borderWidth:1,
-          borderColor:'#33C3B9',
-          //fontSize: 32,
-          //fontWeight: 'bold',
-          //color:'#33C3B9',
-          paddingTop:"2%",
-          marginTop:'2%',
-          alignSelf:'center',
-          alignItems:'center',
-          alignContent:"center",
-          justifyContent:"center"
-          
-        },
-        titleWording: {
-          // borderWidth:1,
-          fontSize: 32,
-          fontWeight: 'bold',
-          color:'#33C3B9',
-        },
-        // container: {
-        //   flex: 1,
-        //   backgroundColor:'#00ffff',
-        // },
-        scrollViewContainer: {
-          height:'50%',
-          borderWidth: 1,
-        },
-        upperContainer: {
-          backgroundColor:'#33C3B9',
-          width:'100%',
-          height: '20%'
-        },
-        lowerContainer: {
-          backgroundColor:'#f8f8ff',
-          backgroundColor:'white',
-          width:'100%',
-          height: '80%',
-        },
-        navigationContainer: {
-          position: 'absolute',
-          marginTop: '0%',
-          width: '100%',
-          borderWidth: 1
-        },
-        titleText: {
-            fontSize: 40,
-            fontWeight: 'bold',
-            color:'white',
-            width: '70%',
-            // padding:'5%',
-            alignContent:'center',
-            justifyContent: 'center',
-            // marginTop:'5%',
-            marginBottom:'5%'
-            // borderWidth:1
-        },
-        titleTextUser:{
-            fontSize: 38,
-            fontWeight: 'bold',
-            color:'white',
-            width: '100%',
-            // padding:'5%',
-            alignContent:'center',
-            justifyContent: 'center',
-            marginTop:'5%',
-            // marginBottom:'5%'
-             //borderWidth:1
-        },
-        logoutBtn:{
-          width:'18%',
-          //borderRadius:25,
-          //height:50,
-          alignItems:"center",
-          justifyContent:"center",
-          marginTop:'11%',
-          marginLeft:'80%',
-          // borderWidth: 1,
-          position: "absolute"
-          // backgroundColor:"#33C3B9",
-      },
-      cardDimension:{
-        width:"94%",
-        borderRadius:25,
-        height:50,
-        alignItems:"center",
-        justifyContent:"center",
-        marginTop:10,
-        marginLeft:12,
-        backgroundColor:"white",
-    },
-    cardText: {
-      width:"78%",
-      fontSize: 18,
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    position:'absolute',
+    width:'95%',
+    height:'100%',
+    marginLeft:'3%'
+  },
+  item: {
+    backgroundColor: 'white',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    width:'100%',
+    borderWidth:1,
+    borderColor:'#33C3B9',
+    paddingTop:"2%",
+    marginTop:'2%',
+    alignSelf:'center',
+    alignItems:'center',
+    alignContent:"center",
+    justifyContent:"center"
+    
+  },
+  titleWording: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color:'#33C3B9',
+  },
+  upperContainer: {
+    backgroundColor:'#33C3B9',
+    width:'100%',
+    height: '20%'
+  },
+  lowerContainer: {
+    backgroundColor:'#f8f8ff',
+    backgroundColor:'white',
+    width:'100%',
+    height: '80%',
+  },
+  titleText: {
+      fontSize: 40,
       fontWeight: 'bold',
       color:'white',
-      backgroundColor:"#33C3B9",
-      borderWidth:1,
-      height:50,
-      paddingLeft:"28%",
-      paddingTop:"3%",
-      alignContent:"center",
-      justifyContent:"center",
-      // alignSelf:"center",
-      // alignItems: "center"
-      // marginTop:10,
-      // marginLeft:12  
-    },
-    cardTextContainer: {
-      width:"100%",
-      height:'25%',
-      borderRadius:25,
-      // fontSize: 18,
-      // fontWeight: 'bold',
-      // color:'white',
-      backgroundColor:"#33C3B9",
-      borderWidth:1,
-      // height:50,
-      // paddingLeft:"20%",
-      // alignContent:"center",
-      // justifyContent:"center",
-      // alignSelf:"center",
-      // alignItems: "center"
-      // marginTop:10,
-      // marginLeft:12  
-    },
-        text: {
-          fontSize: 18,
-          fontWeight: 'bold',
-          color:'white',
-          
-        },
-        image: {
-            height:'10%',
-            width:'10%'
-          },
-        errorText: {
-            width:'50%',
-            marginTop:10,
-            fontSize: 18,
-            color:'red',
-            alignItems:'center'
-          },
-          errorTextSummary: {
-            width:'90%',
-            marginTop:20,
-            paddingLeft:15,
-            fontSize: 18,
-            color:'red',
-            alignItems:'center'
-          },
-        input: {
-            margin: 8,
-            paddingBottom: 3,
-            fontSize: 20
-          },
-          loginBtn:{
-            width:"94%",
-            borderRadius:25,
-            height:50,
-            alignItems:"center",
-            justifyContent:"center",
-            marginTop:10,
-            marginLeft:12,
-            marginBottom:'50%',
-            backgroundColor:"#33C3B9",
-        },
-        animation: {
-          marginTop:'5%',
-          marginBottom:'0%',
-          width: '50%',
-          height: '70%',
-          marginLeft:'0.5%'
-        },
-        indicator: {
-          width: '100%',
-          height: '100%',
-          padding: '0%',
-          margin: '0%',
-          paddingTop: '90%',
-          position:"absolute",
-        },
-      });
+      width: '70%',
+      alignContent:'center',
+      justifyContent: 'center',
+      marginBottom:'5%'
+  },
+  titleTextUser:{
+      fontSize: 38,
+      fontWeight: 'bold',
+      color:'white',
+      width: '100%',
+      alignContent:'center',
+      justifyContent: 'center',
+      marginTop:'5%'
+  },
+});
