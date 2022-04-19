@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Image, SafeAreaView, TouchableOpacity, FlatList} from "react-native";
 import { Text } from 'react-native-paper';
 import { useNavigation, useRoute} from "@react-navigation/native";
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 //import ProfileScreenRedirect from "./profileScreenRedirect";
 
 
@@ -62,6 +64,7 @@ export default function WelcomeScreen() {
     
   }, [route]);
   
+
   const navigation = useNavigation();
 
   const renderItem = ({ item }) => (
@@ -73,6 +76,14 @@ export default function WelcomeScreen() {
       />
   );
 
+  let [fontsLoaded] = useFonts({
+    'OpenSans-Bold': require('../../src/assets/fonts/OpenSans-Bold.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
     return(
       <>
       {/* View to load the two layer of the screen*/}
@@ -80,9 +91,9 @@ export default function WelcomeScreen() {
         <View style={styles.lowerContainer}></View>
                   
         <SafeAreaView style={styles.container}>
-          <Text style={styles.titleTextUser}>Welcome To G4Health</Text>
+          <Text style={styles.titleTextUser}>Welcome To G4Health,</Text>
           {/* <Text style={styles.titleText}>{user}</Text> */}
-          {name?<Text style={styles.titleText}>{name}</Text>: <Text style={styles.titleText}> </Text>}
+          {name?<Text style={styles.titleText}>{name}!</Text>: <Text style={styles.titleText}> </Text>}
           {/* <LogoutButton/> */}
           <FlatList
             data={DATA}
@@ -123,8 +134,8 @@ const styles = StyleSheet.create({
     
   },
   titleWording: {
-    fontSize: 32,
-    fontWeight: 'bold',
+    fontSize: 25,
+    fontFamily: 'OpenSans-Bold',
     color:'#33C3B9',
   },
   upperContainer: {
@@ -139,8 +150,8 @@ const styles = StyleSheet.create({
     height: '80%',
   },
   titleText: {
-      fontSize: 40,
-      fontWeight: 'bold',
+      fontSize: 30,
+      fontFamily: 'OpenSans-Bold',
       color:'white',
       width: '70%',
       alignContent:'center',
@@ -148,8 +159,8 @@ const styles = StyleSheet.create({
       marginBottom:'5%'
   },
   titleTextUser:{
-      fontSize: 38,
-      fontWeight: 'bold',
+      fontSize: 30,
+      fontFamily: 'OpenSans-Bold',
       color:'white',
       width: '100%',
       alignContent:'center',
