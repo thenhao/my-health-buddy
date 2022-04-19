@@ -63,9 +63,9 @@ const Item = ({ item, onPress, backgroundColor, textColor, display, image }) => 
 const TestResults = () => {
 
   const [selectedId, setSelectedId] = useState(null);
-  
+
   let [fontsLoaded] = useFonts({
-    'OpenSans-Bold': require('../../src/assets/fonts/OpenSans-Bold.ttf'),
+    'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
   });
 
   if (!fontsLoaded) {
@@ -123,10 +123,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontFamily: ''
+    fontFamily: 'OpenSans-Regular'
   },
   details: {
     backgroundColor: 'white',
+    fontFamily: 'OpenSans-Regular',
     color: 'black',
     paddingVertical: 5,
     paddingHorizontal: 20,
