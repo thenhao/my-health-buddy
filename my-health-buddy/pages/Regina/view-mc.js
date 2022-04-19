@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import { Searchbar } from 'react-native-paper';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 
@@ -90,6 +91,9 @@ const ViewMC = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const onChangeSearch = query => setSearchQuery(query);
+
   let [fontsLoaded] = useFonts({
     'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
   });
@@ -130,6 +134,11 @@ const ViewMC = () => {
                   uri: 'https://i.ibb.co/31bnJJN/logo.jpg',
                 }}
         style={{ width: 150, height: 100, justifyContent: 'center', alignSelf: 'center' }}
+      />
+      <Searchbar
+        placeholder="Search"
+        onChangeText={onChangeSearch}
+        value={searchQuery}
       />
       <FlatList
         data={DATA}
