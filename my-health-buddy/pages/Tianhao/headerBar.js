@@ -9,7 +9,7 @@ import mcBanner from "./assets/mcbanner.jpeg"
 import mc from "./assets/mc.jpeg"
 import templateMc from "./assets/templatemc.jpeg"
 import testMc from "./assets/testmc.png"
-import LogoutButton from "./logout";
+import ProfileScreenRedirect from "./profileScreenRedirect";
 import BackButton from "./backButton";
 
 
@@ -31,7 +31,7 @@ export default function HeaderBar() {
             {/* back button here */}
             <BackButton/>
             {/* logout button here */}
-            <LogoutButton/>
+            <ProfileScreenRedirect/>
         </View>
     </>
     );

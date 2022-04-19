@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Image, SafeAreaView, TouchableOpacity, FlatList} from "react-native";
 import { Text } from 'react-native-paper';
 import { useNavigation, useRoute} from "@react-navigation/native";
-import LogoutButton from "./logout";
+//import ProfileScreenRedirect from "./profileScreenRedirect";
 
 
 const DATA = [
@@ -83,7 +83,7 @@ export default function WelcomeScreen() {
           <Text style={styles.titleTextUser}>Welcome To G4Health</Text>
           {/* <Text style={styles.titleText}>{user}</Text> */}
           {name?<Text style={styles.titleText}>{name}</Text>: <Text style={styles.titleText}> </Text>}
-          <LogoutButton/>
+          {/* <LogoutButton/> */}
           <FlatList
             data={DATA}
             renderItem={renderItem}
