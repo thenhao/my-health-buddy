@@ -8,7 +8,6 @@ import WelcomeScreen from "./pages/Tianhao/welcomeScreen";
 import TestResults from './pages/Sarah/TestResults';
 import ViewMC from "./pages/Regina/view-mc";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-//import WelcomeScreenNavigator from "./pages/Tianhao/welcomeScreenNavigator";
 import { useNavigation, useRoute} from "@react-navigation/native";
 import ProfileScreen from "./pages/Tianhao/profileScreen";
 
@@ -79,41 +78,12 @@ const WelcomeHomeStackScreen = () => {
 }
 
 function ProfileStackScreen() {
-  // const route = useRoute();
-  //    console.log(route);
-  // useEffect(() => { 
-    
-  //   if(route.params === undefined){
-      
-  //     console.log('profile screen: route value not received');
-  //   }else{
-  //     console.log('profile screen:route has value and not undefined');
-  //     setName(route.params.user);
-    
-  //   };
-    
-  // }, [route]);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Settings!</Text>
     </View>
   );
 }
-
-
-
-// const LoginStackScreen = () => {
-//   return(
-//     <NavigationContainer>
-//       <Stack.Navigator initialRouteName="LoginScreen">
-//         {/* <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreenNavigator}/> */}
-//         <Stack.Screen options={{headerShown: false}} name="LoginScreen" component={ViewLoginScreen} />
-//         <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={HomeStackScreen}/>
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );  
-// }
-
 
 const Stack = createNativeStackNavigator();
 //need to do stack navigator within a tab navigator
