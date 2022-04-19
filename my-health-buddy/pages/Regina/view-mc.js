@@ -4,6 +4,7 @@ import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 
 import ViewMCModal from "./view-mc-modal";
+import HeaderBar from "../Tianhao/headerBar";
 
 const DATA = [
   {
@@ -102,6 +103,7 @@ const ViewMC = () => {
     const color = item.id === selectedId ? 'black' : 'white';
 
     return (
+      
       <Item
         item={item}
         onPress={() => {
@@ -120,6 +122,8 @@ const ViewMC = () => {
   };
 
   return (
+    <>
+    <HeaderBar/>
     <SafeAreaView style={styles.container}>
        <Image
         source={{
@@ -134,6 +138,8 @@ const ViewMC = () => {
         extraData={selectedId}
       />
     </SafeAreaView>
+    </>
+    
   );
 };
 
