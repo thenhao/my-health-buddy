@@ -114,8 +114,6 @@ const ViewMC = () => {
     }
   }
 
-  
-
   let [fontsLoaded] = useFonts({
     'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
   });
