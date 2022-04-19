@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import HeaderBar from "../Tianhao/headerBar";
 
 const DATA = [
@@ -103,7 +103,6 @@ const TestResults = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
     backgroundColor:'white'
   },
   item: {
