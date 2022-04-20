@@ -55,21 +55,6 @@ const ViewMCModal = (props) => {
             >
               <Text style={styles.textStyle}>Close</Text>
             </Pressable>
-
-            <Pressable
-              style={[styles.button, onPressColourShare]}
-              onPress={() => {
-                console.log('Share button has been pressed.')}
-              }
-              onPressIn={() => {
-                setOnPressColourShare(styles.buttonPressIn);
-              }}
-              onPressOut={() => {
-                setOnPressColourShare(styles.buttonPressOut);
-              }}
-            >
-              <Text style={styles.textStyle}>Share</Text>
-            </Pressable>
           </View>
         </View>
       </Modal>
@@ -106,7 +91,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   button: {
-    marginTop: 0.03*windowHeight,
+    marginTop: 0.07*windowHeight,
     width: 0.3*windowWidth,
     borderRadius: 25,
     padding: 10,
@@ -114,7 +99,6 @@ const styles = StyleSheet.create({
   },
   buttonPressIn: {
     backgroundColor: "aquamarine",
-    color: 'black'
   },
   buttonPressOut: {
     backgroundColor: "#33C3B9",
