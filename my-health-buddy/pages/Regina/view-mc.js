@@ -158,28 +158,35 @@ const ViewMC = () => {
 
   return (
     <>
-    <HeaderBar/>
-    <SafeAreaView style={styles.container}>
-       <Image
-        source={{
-                  uri: 'https://i.ibb.co/31bnJJN/logo.jpg',
-                }}
-        style={{ width: 150, height: 100, justifyContent: 'center', alignSelf: 'center' }}
-      />
-      <Searchbar
-        inputStyle={styles.inputSearchbar}
-        style={styles.searchbar}
-        placeholder="Search"
-        onChangeText={onChangeSearch}
-        value={searchQuery}
-      />
-      <FlatList
-        data={dataList}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        extraData={selectedId}
-      />
-    </SafeAreaView>
+      <HeaderBar/>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <SafeAreaView style={styles.container}>
+            <Image
+              source={{
+                        uri: 'https://i.ibb.co/31bnJJN/logo.jpg',
+                      }}
+              style={{ width: 150, height: 100, justifyContent: 'center', alignSelf: 'center' }}
+            />
+            <Searchbar
+              inputStyle={styles.inputSearchbar}
+              style={styles.searchbar}
+              placeholder="Search"
+              onChangeText={onChangeSearch}
+              value={searchQuery}
+            />
+            <FlatList
+              data={dataList}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+              extraData={selectedId}
+            />
+          </SafeAreaView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </>
     
   );
