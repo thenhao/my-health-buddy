@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         height:'90%',
         marginTop:'28%',
         // marginLeft:'3%',
-        backgroundColor: 'white'
+        backgroundColor: '#fdfdfd'
   },
   headerG:{
     // marginBottom:'1%',
