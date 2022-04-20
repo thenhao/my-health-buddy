@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Modal, StyleSheet, Text, Pressable, View, Dimensions } from "react-native";
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
@@ -7,6 +7,9 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const ViewMCModal = (props) => {
+
+  const [onPressColourClose, setOnPressColourClose] = useState(styles.buttonPressOut);
+  const [onPressColourShare, setOnPressColourShare] = useState(styles.buttonPressOut);
 
   let [fontsLoaded] = useFonts({
     'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
@@ -37,21 +40,33 @@ const ViewMCModal = (props) => {
             <Text style={styles.modalContent}>Duration: {props.mcDuration}</Text>
 
             <Pressable
-              style={[styles.button, styles.buttonClose]}
+              style={[styles.button, onPressColourClose]}
               onPress={() => {
                 props.setModalVisible(!props.modalVisible);
                 props.setSelectedId(null);
                 console.log('Modal has been closed.')}
               }
+              onPressIn={() => {
+                setOnPressColourClose(styles.buttonPressIn);
+              }}
+              onPressOut={() => {
+                setOnPressColourClose(styles.buttonPressOut);
+              }}
             >
               <Text style={styles.textStyle}>Close</Text>
             </Pressable>
 
             <Pressable
-              style={[styles.button, styles.buttonClose]}
+              style={[styles.button, onPressColourShare]}
               onPress={() => {
                 console.log('Share button has been pressed.')}
               }
+              onPressIn={() => {
+                setOnPressColourShare(styles.buttonPressIn);
+              }}
+              onPressOut={() => {
+                setOnPressColourShare(styles.buttonPressOut);
+              }}
             >
               <Text style={styles.textStyle}>Share</Text>
             </Pressable>
@@ -97,7 +112,11 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2
   },
-  buttonClose: {
+  buttonPressIn: {
+    backgroundColor: "aquamarine",
+    color: 'black'
+  },
+  buttonPressOut: {
     backgroundColor: "#33C3B9",
   },
   textStyle: {
