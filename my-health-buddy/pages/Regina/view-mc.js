@@ -1,5 +1,16 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import { 
+  FlatList, 
+  SafeAreaView, 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity, 
+  Image, 
+  KeyboardAvoidingView, 
+  Keyboard, 
+  TouchableWithoutFeedback, 
+  Platform 
+} from "react-native";
 import { Searchbar } from 'react-native-paper';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
