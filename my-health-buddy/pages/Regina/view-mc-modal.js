@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     elevation: 2
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#33C3B9",
   },
   textStyle: {
     fontFamily: 'OpenSans-Regular',
