@@ -12,7 +12,7 @@ import HealthArticleSolo from "./pages/Jeffery/HealthArticleSolo"
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import ProfileScreen from "./pages/Tianhao/profileScreen";
-import eatingHealthy from "./pages/Shaun/eatingHealthy";
+import CarouselCards from "./pages/Shaun/carouselCards";
 
 const TestResultsScreen = () => {
   return (
@@ -71,17 +71,18 @@ const WelcomeHomeStack = createNativeStackNavigator();
 const WelcomeHomeStackScreen = () => {
 
   return (
-    <WelcomeHomeStack.Navigator initialRouteName="WelcomeScreenTest">
+    <WelcomeHomeStack.Navigator initialRouteName="WelcomeScreenTest2">
       {/* <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreenNavigator}/> */}
+      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="WelcomeScreenTest2" component={WelcomeScreen} />
       <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="TestResultsTest" component={TestResults} />
       <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="ViewMCTest" component={ViewMC} />
-      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="WelcomeScreenTest2" component={WelcomeScreen} />
-      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="EatingHealthy" component={eatingHealthy} />
+      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="EatingHealthy" component={CarouselCards} />
+      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="Profile" component={ProfileScreen} />
       <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="HealthTips" component={HealthArticles} />
       <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="HealthArticleSolo" component={HealthArticleSolo} />
-
     </WelcomeHomeStack.Navigator>
   );
+
 }
 
 function ProfileStackScreen() {
@@ -98,8 +99,8 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator name="App" initialRouteName="LoginScreen">
-        <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name="WelcomeScreenTest" component={HomeStackScreen} />
+      <Stack.Navigator initialRouteName="LoginScreen">
+        <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name="WelcomeScreenTest" component={WelcomeHomeStackScreen} />
         <Stack.Screen options={{ headerShown: false }} name="LoginScreen" component={ViewLoginScreen} />
         {/* <Stack.Screen name="TestResultsTest" component={TestResults} />
         <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} /> */}
