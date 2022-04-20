@@ -4,7 +4,7 @@ import { Text } from 'react-native-paper';
 import { useNavigation, useRoute} from "@react-navigation/native";
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
-//import ProfileScreenRedirect from "./profileScreenRedirect";
+import ProfileScreenRedirect from "./profileScreenRedirect";
 
 
 const DATA = [
@@ -89,12 +89,13 @@ export default function WelcomeScreen() {
       {/* View to load the two layer of the screen*/}
         <View style={styles.upperContainer}></View>
         <View style={styles.lowerContainer}></View>
-                  
+              
         <SafeAreaView style={styles.container}>
+          <ProfileScreenRedirect/> 
           <Text style={styles.titleTextUser}>Welcome to G4Health,</Text>
           {/* <Text style={styles.titleText}>{user}</Text> */}
           {name?<Text style={styles.titleText}>{name}!</Text>: <Text style={styles.titleText}> </Text>}
-          {/* <LogoutButton/> */}
+          
           <FlatList
             data={DATA}
             renderItem={renderItem}
@@ -113,8 +114,11 @@ const styles = StyleSheet.create({
     position:'absolute',
     width:'95%',
     height:'100%',
-    marginLeft:'3%'
+    marginLeft:'3%',
   },
+  // item: {
+  //   marginBottom:'1%'
+  // },
   item: {
     backgroundColor: 'white',
     padding: 20,
@@ -155,7 +159,7 @@ const styles = StyleSheet.create({
       width: '70%',
       alignContent:'center',
       justifyContent: 'center',
-      marginBottom:'5%'
+      marginBottom:'10%'
   },
   titleTextUser:{
       fontSize: 30,

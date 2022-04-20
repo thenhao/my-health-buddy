@@ -69,12 +69,13 @@ const WelcomeHomeStack = createNativeStackNavigator();
 const WelcomeHomeStackScreen = () => {
   
   return(
-      <WelcomeHomeStack.Navigator initialRouteName="WelcomeScreenTest">
+      <WelcomeHomeStack.Navigator initialRouteName="WelcomeScreenTest2">
         {/* <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreenNavigator}/> */}
+        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest2" component={WelcomeScreen} />
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="TestResultsTest" component={TestResults} />
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} />
-        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest2" component={WelcomeScreen} />
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="EatingHealthy" component={CarouselCards} />
+        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="Profile" component={ProfileScreen} />
       </WelcomeHomeStack.Navigator>
   );  
 }
@@ -93,8 +94,8 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator name="App" initialRouteName="LoginScreen">
-        <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={HomeStackScreen}/>
+      <Stack.Navigator initialRouteName="LoginScreen">
+        <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeHomeStackScreen}/>
         <Stack.Screen options={{headerShown: false}} name="LoginScreen" component={ViewLoginScreen} />
         {/* <Stack.Screen name="TestResultsTest" component={TestResults} />
         <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} /> */}

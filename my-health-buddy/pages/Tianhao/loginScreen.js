@@ -111,15 +111,21 @@ export default function LoginScreen() {
     if(isLoading===false && error === false && isLogout === false){
       if(!firstTime){
         //ref:https://reactnavigation.org/docs/nesting-navigators/
+        // navigation.navigate('WelcomeScreenTest', {
+        //   screen: 'Home',
+        //   params: {
+        //     screen: 'WelcomeScreenTest2',
+        //     params: {
+        //       user: username,
+        //     },
+        //   },
+        // });
         navigation.navigate('WelcomeScreenTest', {
-          screen: 'Home',
-          params: {
-            screen: 'WelcomeScreenTest2',
-            params: {
-              user: username,
-            },
-          },
-        });
+              screen: 'WelcomeScreenTest2',
+              params: {
+                user: username,
+              }, 
+          });
       } 
     }
   },  [isLoading]);
