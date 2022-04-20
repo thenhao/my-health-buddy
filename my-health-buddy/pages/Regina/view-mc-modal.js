@@ -1,11 +1,21 @@
-import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View, Dimensions } from "react-native";
-import { DataTable } from "react-native-paper";
+import React from "react";
+import { Modal, StyleSheet, Text, Pressable, View, Dimensions } from "react-native";
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const ViewMCModal = (props) => {
+
+  let [fontsLoaded] = useFonts({
+    'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
+    'OpenSans-Bold': require('../../src/assets/fonts/OpenSans-Bold.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <View style={styles.centeredView}>
@@ -20,16 +30,17 @@ const ViewMCModal = (props) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalContent}>MC ID: {props.mcId}</Text>
-            <Text style={styles.modalContent}>Clinic Visited: {props.clinic}</Text>
-            <Text style={styles.modalContent}>Date Visted: {props.mcStart}</Text>
-            <Text style={styles.modalContent}>MC Start Date: {props.mcStart}</Text>
-            <Text style={styles.modalContent}>MC End Date: {props.mcEnd}</Text>
-            <Text style={styles.modalContent}>MC Duration: {props.mcDuration}</Text>
+            <Text style={styles.modalContent}>Clinic: {props.clinic}</Text>
+            <Text style={styles.modalContent}>Visited: {props.mcStart}</Text>
+            <Text style={styles.modalContent}>Start Date: {props.mcStart}</Text>
+            <Text style={styles.modalContent}>End Date: {props.mcEnd}</Text>
+            <Text style={styles.modalContent}>Duration: {props.mcDuration}</Text>
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
                 props.setModalVisible(!props.modalVisible);
+                props.setSelectedId(null);
                 console.log('Modal has been closed.')}
               }
             >
@@ -58,6 +69,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: '80%',
+    backgroundColor: 'black',
+    opacity: 0.8
   },
   modalView: {
     backgroundColor: "white",
@@ -65,7 +78,7 @@ const styles = StyleSheet.create({
     padding: 35,
     marginTop: 0.05*windowHeight,
     height: 0.6*windowHeight,
-    width: 0.75*windowWidth,
+    width: 0.8*windowWidth,
     justifyContent: 'center',
     alignItems: "center",
     shadowColor: "#000",
@@ -88,13 +101,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#2196F3",
   },
   textStyle: {
+    fontFamily: 'OpenSans-Regular',
     color: "white",
-    fontWeight: "bold",
     textAlign: "center"
   },
   modalContent: {
-    fontSize: 15,
-    fontWeight: 'bold',
+    fontSize: 13,
+    fontFamily: 'OpenSans-Bold',
     borderBottomWidth: 1,
     borderBottomColor: 'black',
     paddingBottom: 10,
