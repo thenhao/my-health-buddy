@@ -3,7 +3,7 @@ import { View } from "react-native"
 import Carousel, { Pagination } from "react-native-snap-carousel"
 import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from './carouselCardItems'
 import eatingHealthy from './eatingHealthy'
-
+import HeaderBar from '../Tianhao/headerBar'
 
 const CarouselCards = () => {
   const [index, setIndex] = React.useState(0)
@@ -11,6 +11,7 @@ const CarouselCards = () => {
 
 
   return (
+    <> <HeaderBar/>
     <View>
       <Carousel
         layout="tinder"
@@ -38,7 +39,8 @@ const CarouselCards = () => {
         inactiveDotScale={0.6}
         tappableDots={true}
       />
-    </View>
+    </View></>
+   
 
   )
 }
