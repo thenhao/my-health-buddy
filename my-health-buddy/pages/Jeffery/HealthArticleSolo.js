@@ -1,12 +1,18 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-const HealthArticleSolo = () => {
+import React, { useState, useRef } from 'react';
+import { View, Text, StyleSheet, Image, ImageBackground, Dimensions } from 'react-native';
+import data from './data'
+
+const HealthArticleSolo = (props) => {
+
     return (
         <View style={styles.container}>
             <Text>This is a solo Article Screen</Text>
         </View>
     );
 };
+
+
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,

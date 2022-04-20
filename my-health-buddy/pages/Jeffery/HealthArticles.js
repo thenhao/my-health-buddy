@@ -2,18 +2,24 @@ import React, { useState, useRef } from 'react'
 import { View, TouchableOpacity } from "react-native"
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 import HealthArticleItem, { SliderWidth, ItemWidth, SliderHeight, ItemHeight } from './HealthArticleItem'
-import data from './data'
-
+import data from './data';
+import { useNavigation } from "@react-navigation/native";
 
 //HealthArticles will be responsible for displaying the carousel. 
 //Ref: https://blog.logrocket.com/using-react-native-to-implement-a-carousel/
 
-
-
 const HealthArticles = () => {
     const [index, setIndex] = useState(0);
     const isCarousel = useRef(null);
-
+    const navigation = useNavigation();
+    const renderItem = ({ item }) => (
+        <HealthArticleItem
+            imgUrl={item.imgUrl}
+            id={item.id}
+            title={item.title}
+            onPress={() => navigation.navigate('HealthArticleSolo')}
+        />
+    );
     return (
         <View>
             <Carousel
@@ -21,7 +27,7 @@ const HealthArticles = () => {
                 layoutCardOffset={9}
                 ref={isCarousel}
                 data={data}
-                renderItem={HealthArticleItem}
+                renderItem={renderItem}
                 // sliderWidth={SliderWidth}
                 // itemWidth={ItemWidth}
                 sliderHeight={SliderHeight}

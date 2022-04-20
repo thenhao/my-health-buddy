@@ -1,44 +1,35 @@
 import React from 'react'
 import { SafeAreaView, View, Text, StyleSheet, Dimensions, Image, ImageBackground, TouchableOpacity } from "react-native"
 import HealthArticleSolo from "./HealthArticleSolo"
-import { useNavigation } from "@react-navigation/native";
-// export const SliderWidth = Dimensions.get('window').width
-// export const ItemWidth = Math.round(SliderWidth * 1)
-
-export const SliderHeight = Dimensions.get('window').height
-export const ItemHeight = Math.round(SliderHeight * 0.3)
 
 
 //The HealthArticleItem implements the look of the cards in the carousel. It returns a component that will display the item passed as props.
 //Ref: https://blog.logrocket.com/using-react-native-to-implement-a-carousel/
 //Ref: https://snack.expo.dev/KJl_IKU3D
 
-const HealthArticleItem = ({ item, index }) => {
+//If doing horizontal carousel then which to width
+// export const SliderWidth = Dimensions.get('window').width
+// export const ItemWidth = Math.round(SliderWidth * 1)
+export const SliderHeight = Dimensions.get('window').height
+export const ItemHeight = Math.round(SliderHeight * 0.3)
 
-    // const navigation = useNavigation();
 
-    function handleViewArticleSolo() {
-        navigation.navigate("HealthArticleSolo");
-    }
-
+const HealthArticleItem = ({ imgUrl, id, title, onPress }) => {
 
     return (
-        <View style={styles.container} key={index}>
-
+        <View style={styles.container} key={id}>
             <ImageBackground
-                source={{ uri: item.imgUrl }}
+                source={{ uri: imgUrl }}
                 style={styles.image}>
-                <Text style={styles.header} onPress={handleViewArticleSolo}>{item.title}</Text>
+                <Text style={styles.header} onPress={onPress}>{title}</Text>
                 {/* <Text style={styles.body}>{item.body}</Text> */}
             </ImageBackground>
-
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-
         backgroundColor: 'white',
         borderRadius: 8,
         //For horizontal carousel
