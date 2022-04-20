@@ -140,7 +140,8 @@ const ViewMC = () => {
   const closeMenu = () => setMenuVisible(false);
 
   const sortAZ = () => {
-    DATA.sort(function(a, b) {
+    let sortedData = [...DATA];
+    sortedData.sort(function(a, b) {
       const nameA = a.clinic.toUpperCase(); // ignore upper and lowercase
       const nameB = b.clinic.toUpperCase(); // ignore upper and lowercase
       if (nameA < nameB) {
@@ -153,11 +154,12 @@ const ViewMC = () => {
       return 0;
     });
 
-    setDataList(DATA);
+    setDataList(sortedData);
   }
 
   const sortZA = () => {
-    DATA.sort(function(a, b) {
+    let sortedData = [...DATA];
+    sortedData.sort(function(a, b) {
       const nameA = a.clinic.toUpperCase(); // ignore upper and lowercase
       const nameB = b.clinic.toUpperCase(); // ignore upper and lowercase
       if (nameA < nameB) {
@@ -170,11 +172,12 @@ const ViewMC = () => {
       return 0;
     });
 
-    setDataList(DATA);
+    setDataList(sortedData);
   }
 
   const sortFromOldest = () => {
-    DATA.sort(function(a, b) {
+    let sortedData = [...DATA];
+    sortedData.sort(function(a, b) {
       const dateA = new Date(a.formattedStartDate); 
       const dateB = new Date(b.formattedStartDate);
 
@@ -188,11 +191,12 @@ const ViewMC = () => {
       return 0;
     });
 
-    setDataList(DATA);
+    setDataList(sortedData);
   }
 
   const sortFromNewest = () => {
-    DATA.sort(function(a, b) {
+    let sortedData = [...DATA];
+    sortedData.sort(function(a, b) {
       const dateA = new Date(a.formattedStartDate); 
       const dateB = new Date(b.formattedStartDate);
       if (dateA.getTime() < dateB.getTime()) {
@@ -205,7 +209,7 @@ const ViewMC = () => {
       return 0;
     });
 
-    setDataList(DATA);
+    setDataList(sortedData);
   }
 
 
@@ -275,10 +279,10 @@ const ViewMC = () => {
                     onPress={openMenu}
                   ><FontAwesome name="sort" size={24} color="white" /></Button>
                 }>
-                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortAZ();}} title='A-Z' />
-                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortZA();}} title="Z-A" />
-                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromOldest();}} title="Oldest" />
-                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromNewest()}} title="Newest" />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortAZ(); closeMenu();}} title='A-Z' />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortZA(); closeMenu();}} title="Z-A" />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromOldest(); closeMenu();}} title="Oldest" />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromNewest(); closeMenu();}} title="Newest" />
               </Menu>
             </View>
 
