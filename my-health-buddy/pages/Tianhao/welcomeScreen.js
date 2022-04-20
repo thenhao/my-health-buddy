@@ -36,7 +36,7 @@ const Item = ({ title, link, onPress }) => (
      style={styles.item}
     >
       {/* source={{uri:'https://i.ibb.co/31bnJJN/logo.jpg'}} */}
-      <Image source={link} style={{width:200, height: 200, left:'15%'}}></Image>
+      <Image source={link} style={{width:200, height: 200, alignSelf: 'center'}}></Image>
       <View style={styles.title}>
           <Text 
            style={styles.titleWording}
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: 'white',
     padding: 20,
-    marginTop: 30,
+    marginTop: 10,
     marginHorizontal: 16,
   },
   title: {
@@ -144,14 +144,13 @@ const styles = StyleSheet.create({
   upperContainer: {
     backgroundColor:'#33C3B9',
     width:'100%',
-    height: '25%'
+    height: '24%'
   },
   lowerContainer: {
     backgroundColor:'#f8f8ff',
     backgroundColor:'white',
-    paddingTop: '5%',
     width:'100%',
-    height: '75%',
+    height: '76%',
   },
   titleText: {
       fontSize: 30,
@@ -166,7 +165,7 @@ const styles = StyleSheet.create({
       fontSize: 30,
       fontFamily: 'OpenSans-Bold',
       color:'white',
-      width: '100%',
+      width: '60%',
       paddingTop: '5%',
       alignContent:'center',
       justifyContent: 'center',
