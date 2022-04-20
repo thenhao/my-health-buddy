@@ -20,7 +20,6 @@ const HealthArticleSolo = (props) => {
                         source={{ uri: params.imgUrl }}
                         style={styles.image}>
                     </Image>
-
                     <Text style={styles.header}>{params.title}</Text>
                     <Text style={styles.body}>{params.body}</Text>
                 </View>

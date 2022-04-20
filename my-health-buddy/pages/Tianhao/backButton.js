@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
       alignItems:"center",
       justifyContent:"center",
       marginTop:'9%',
-      marginLeft:'0%',
+      marginLeft:'0.5%',
       position: "absolute"
   },
   });

@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   modalView: {
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    padding: 10,
     marginTop: 0.05*windowHeight,
     height: 0.6*windowHeight,
     width: 0.8*windowWidth,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     elevation: 2
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#33C3B9",
   },
   textStyle: {
     fontFamily: 'OpenSans-Regular',

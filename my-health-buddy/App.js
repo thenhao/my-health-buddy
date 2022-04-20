@@ -14,21 +14,21 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import ProfileScreen from "./pages/Tianhao/profileScreen";
 import CarouselCards from "./pages/Shaun/carouselCards";
 
-const TestResultsScreen = () => {
-  return (
-    <View>
-      <TestResults />
-    </View>
-  );
-}
+// const TestResultsScreen = () => {
+//   return(
+//     <View>
+//       <TestResults />
+//     </View>
+//   );
+// }
 
-const ViewMCScreen = () => {
-  return (
-    <View>
-      <ViewMC />
-    </View>
-  );
-}
+// const ViewMCScreen = () => {
+//   return(
+//     <View>
+//       <ViewMC />
+//     </View>
+//   );
+// }
 
 const ViewLoginScreen = () => {
   return (
@@ -38,34 +38,35 @@ const ViewLoginScreen = () => {
   );
 }
 
-const Tab = createBottomTabNavigator();
-const HomeStackScreen = () => {
-  return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
 
-          if (route.name === 'Home') {
-            iconName = focused
-              ? 'home'
-              : 'home-outline';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'ios-person-circle-outline' : 'ios-person-circle';
-          }
+// const Tab = createBottomTabNavigator();
+// const HomeStackScreen = () => {
+//   return(
+//       <Tab.Navigator
+//       screenOptions={({ route }) => ({
+//         tabBarIcon: ({ focused, color, size }) => {
+//           let iconName;
 
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: '#33C3B9',
-        tabBarInactiveTintColor: 'gray',
-      })}>
-      <Tab.Screen options={{ headerShown: false, gestureEnabled: false }} name="Home" component={WelcomeHomeStackScreen} />
-      <Tab.Screen options={{ headerShown: false, gestureEnabled: false }} name="Profile" component={ProfileScreen} />
-    </Tab.Navigator>
+//           if (route.name === 'Home') {
+//             iconName = focused
+//               ? 'home'
+//               : 'home-outline';
+//           } else if (route.name === 'Profile') {
+//             iconName = focused ? 'ios-person-circle-outline' : 'ios-person-circle';
+//           }
 
-  );
-}
+//           // You can return any component that you like here!
+//           return <Ionicons name={iconName} size={size} color={color} />;
+//         },
+//         tabBarActiveTintColor: '#33C3B9',
+//         tabBarInactiveTintColor: 'gray',
+//       })}>
+//           <Tab.Screen options={{headerShown: false, gestureEnabled: false}} name="Home" component={WelcomeHomeStackScreen}/>
+//           <Tab.Screen options={{headerShown: false, gestureEnabled: false}} name="Profile" component={ProfileScreen} />
+//       </Tab.Navigator>
+
+//   );  
+// }
 
 const WelcomeHomeStack = createNativeStackNavigator();
 const WelcomeHomeStackScreen = () => {
@@ -85,13 +86,13 @@ const WelcomeHomeStackScreen = () => {
 
 }
 
-function ProfileStackScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+// function ProfileStackScreen() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Settings!</Text>
+//     </View>
+//   );
+// }
 
 const Stack = createNativeStackNavigator();
 //need to do stack navigator within a tab navigator
