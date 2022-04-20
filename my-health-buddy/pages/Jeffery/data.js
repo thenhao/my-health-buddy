@@ -29,7 +29,7 @@ export default data = [
     {
         id: 5,
         title: "Get in the zone",
-        body: "Have you heard of “blue zones”?/nThe color might be cool. But these are actually hot spots — for longevity. And the folks who inhabit these locales, including places as diverse as Loma Linda, California, and Okinawa, Japan, don/'t just live longer on average. They often avoid the health problems we might consider inevitable as we age./n/nDiabetes. Heart disease. Obesity. Of course, many factors contribute to making a zone blue. But regional cuisine almost certainly plays a role.",
+        body: "Have you heard of \"blue zones\"? The color might be cool. But these are actually hot spots — for longevity. And the folks who inhabit these locales, including places as diverse as Loma Linda, California, and Okinawa, Japan, don't just live longer on average. \n\nThey often avoid the health problems we might consider inevitable as we age./n/nDiabetes. Heart disease. Obesity. Of course, many factors contribute to making a zone blue. But regional cuisine almost certainly plays a role.",
         imgUrl: "https://st.focusedcollection.com/9264440/i/650/focused_229785334-stock-photo-fresh-vegetables-fruits.jpg"
     },
 
