@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-const HealthArticleSolo = () => {
+const HealthArticleSolo = (props) => {
+    const params = props.route.params;
     return (
         <View style={styles.container}>
             <Text>This is a solo Article Screen</Text>
+            <Text>{params.body}</Text>
         </View>
     );
 };
