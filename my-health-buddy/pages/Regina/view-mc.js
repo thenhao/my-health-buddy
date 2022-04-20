@@ -12,7 +12,7 @@ import {
   Platform,
   View
 } from "react-native";
-import { Searchbar, Button, Menu, Divider, Provider } from 'react-native-paper';
+import { Searchbar, Button, Menu, Provider } from 'react-native-paper';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { FontAwesome } from '@expo/vector-icons'; 
@@ -23,9 +23,10 @@ import HeaderBar from "../Tianhao/headerBar";
 const DATA = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    mc_id: '1323',
+    mc_id: '1343',
     clinic: "Long & Yun Medical Clinic",
     mc_duration: '2 days',
+    formattedStartDate: '2021-12-03',
     mc_startDate: '3rd December 2021',
     mc_endDate: '4th December 2021'
   },
@@ -34,46 +35,52 @@ const DATA = [
     mc_id: '943',
     clinic: "Long & Yun Medical Clinic",
     mc_duration: '1 day',
+    formattedStartDate: '2021-03-30',
     mc_startDate: '30th March 2021',
     mc_endDate: '30th March 2021'
   },
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    mc_id: '820',
+    mc_id: '4509',
     clinic: "Khoo & Tan Medical Clinic",
     mc_duration: '3 days',
+    formattedStartDate: '2020-05-26',
     mc_startDate: '26th May 2020',
     mc_endDate: '28th May 2020'
   },
   {
     id: "3358761d-c7d9-4b5f-8372-a218b7ffede8",
-    mc_id: '760',
+    mc_id: '3423',
     clinic: "Khoo & Tan Medical Clinic",
     mc_duration: '3 days',
+    formattedStartDate: '2019-09-26',
     mc_startDate: '26th September 2019',
     mc_endDate: '28th September 2019'
   },
   {
     id: "5dfb5157-869e-4259-ba08-3a34cb4faf95",
-    mc_id: '699',
+    mc_id: '1290',
     clinic: "Oboey Medical Clinic",
     mc_duration: '2 days',
+    formattedStartDate: '2019-06-14',
     mc_startDate: '14th June 2019',
     mc_endDate: '14th June 2019'
   },
   {
     id: "35c53d0b-fd2d-45d4-98be-94c31c0d85f1",
-    mc_id: '604',
+    mc_id: '8922',
     clinic: "S&S Medical Clinic",
     mc_duration: '1 day',
+    formattedStartDate: '2019-01-12',
     mc_startDate: '12th January 2019',
     mc_endDate: '13th January 2019'
   },
   {
     id: "8716c05a-0698-4ac9-821c-d54ac7354a2d",
-    mc_id: '542',
+    mc_id: '7816',
     clinic: "S&S Medical Clinic",
     mc_duration: '5 days',
+    formattedStartDate: '2018-07-12',
     mc_startDate: '12th July 2018',
     mc_endDate: '16th July 2018'
   },
@@ -132,13 +139,74 @@ const ViewMC = () => {
   const openMenu = () => setMenuVisible(true);
   const closeMenu = () => setMenuVisible(false);
 
-  const sortAZ = () => {}
+  const sortAZ = () => {
+    DATA.sort(function(a, b) {
+      const nameA = a.clinic.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.clinic.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
 
-  const sortZA = () => {}
+    setDataList(DATA);
+  }
 
-  const sortFromOldest = () => {}
+  const sortZA = () => {
+    DATA.sort(function(a, b) {
+      const nameA = a.clinic.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.clinic.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return 1;
+      }
+      if (nameA > nameB) {
+        return -1;
+      }
+      // names must be equal
+      return 0;
+    });
 
-  const sortFromNewest = () => {}
+    setDataList(DATA);
+  }
+
+  const sortFromOldest = () => {
+    DATA.sort(function(a, b) {
+      const dateA = new Date(a.formattedStartDate); 
+      const dateB = new Date(b.formattedStartDate);
+
+      if (dateA.getTime() < dateB.getTime()) {
+        return -1;
+      }
+      if (dateA.getTime() > dateB.getTime()) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+
+    setDataList(DATA);
+  }
+
+  const sortFromNewest = () => {
+    DATA.sort(function(a, b) {
+      const dateA = new Date(a.formattedStartDate); 
+      const dateB = new Date(b.formattedStartDate);
+      if (dateA.getTime() < dateB.getTime()) {
+        return 1;
+      }
+      if (dateA.getTime() > dateB.getTime()) {
+        return -1;
+      }
+      // names must be equal
+      return 0;
+    });
+
+    setDataList(DATA);
+  }
 
 
   let [fontsLoaded] = useFonts({
@@ -207,10 +275,10 @@ const ViewMC = () => {
                     onPress={openMenu}
                   ><FontAwesome name="sort" size={24} color="white" /></Button>
                 }>
-                <Menu.Item onPress={() => {sortAZ}} title='A-Z' />
-                <Menu.Item onPress={() => {sortZA}} title="Z-A" />
-                <Menu.Item onPress={() => {sortFromOldest}} title="Oldest" />
-                <Menu.Item onPress={() => {sortFromNewest}} title="Newest" />
+                <Menu.Item onPress={() => {sortAZ();}} title='A-Z' />
+                <Menu.Item onPress={() => {sortZA();}} title="Z-A" />
+                <Menu.Item onPress={() => {sortFromOldest();}} title="Oldest" />
+                <Menu.Item onPress={() => {sortFromNewest()}} title="Newest" />
               </Menu>
             </View>
 
