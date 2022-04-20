@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         position:'absolute',
         width:'100%',
         height:'90%',
-        marginTop:'26%',
+        marginTop:'28%',
         // marginLeft:'3%',
         backgroundColor: 'white'
   },
@@ -100,14 +100,14 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans-Bold',
     color:'white'
   },
-  backBtn:{
-      width:'18%',
-      alignItems:"center",
-      justifyContent:"center",
-      marginTop:'9%',
-      marginLeft:'0%',
-      position: "absolute"
-  },
+  // backBtn:{
+  //     width:'18%',
+  //     alignItems:"center",
+  //     justifyContent:"center",
+  //     marginTop:'9%',
+  //     marginLeft:'0%',
+  //     position: "absolute"
+  // },
   loginBtn:{
     width:"94%",
     borderRadius:25,
