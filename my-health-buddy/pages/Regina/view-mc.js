@@ -9,11 +9,13 @@ import {
   KeyboardAvoidingView, 
   Keyboard, 
   TouchableWithoutFeedback, 
-  Platform 
+  Platform,
+  View
 } from "react-native";
 import { Searchbar, Button, Menu, Divider, Provider } from 'react-native-paper';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
+import { FontAwesome } from '@expo/vector-icons'; 
 
 import ViewMCModal from "./view-mc-modal";
 import HeaderBar from "../Tianhao/headerBar";
@@ -125,11 +127,19 @@ const ViewMC = () => {
     }
   }
 
-  const [menuVisible, setMenuVisible] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false); //initialise state for sorting menu
 
   const openMenu = () => setMenuVisible(true);
-
   const closeMenu = () => setMenuVisible(false);
+
+  const sortAZ = () => {}
+
+  const sortZA = () => {}
+
+  const sortFromOldest = () => {}
+
+  const sortFromNewest = () => {}
+
 
   let [fontsLoaded] = useFonts({
     'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
@@ -163,7 +173,7 @@ const ViewMC = () => {
   };
 
   return (
-    <>
+    <Provider>
       <HeaderBar/>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -178,33 +188,30 @@ const ViewMC = () => {
               style={{ width: 150, height: 100, justifyContent: 'center', alignSelf: 'center' }}
             />
 
-            <View>
-              <Searchbar
-                inputStyle={styles.inputSearchbar}
-                style={styles.searchbar}
-                placeholder="Search"
-                onChangeText={onChangeSearch}
-                value={searchQuery}
-              />
+            <Searchbar
+              inputStyle={styles.inputSearchbar}
+              style={styles.searchbar}
+              placeholder="Search"
+              onChangeText={onChangeSearch}
+              value={searchQuery}
+            />
 
-              <Provider>
-                    <View
-                      style={{
-                        paddingTop: 50,
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                      }}>
-                      <Menu
-                        visible={setMenuVisible}
-                        onDismiss={closeMenu}
-                        anchor={<Button onPress={openMenu}>Show menu</Button>}>
-                        <Menu.Item onPress={() => {}} title="Item 1" />
-                        <Menu.Item onPress={() => {}} title="Item 2" />
-                        <Divider />
-                        <Menu.Item onPress={() => {}} title="Item 3" />
-                      </Menu>
-                    </View>
-                  </Provider>
+            <View style={styles.menuContainer}>
+              <Menu
+                visible={menuVisible}
+                onDismiss={closeMenu}
+                style={styles.menu}
+                anchor={
+                  <Button 
+                    style={styles.menuButton}
+                    onPress={openMenu}
+                  ><FontAwesome name="sort" size={24} color="white" /></Button>
+                }>
+                <Menu.Item onPress={() => {sortAZ}} title='A-Z' />
+                <Menu.Item onPress={() => {sortZA}} title="Z-A" />
+                <Menu.Item onPress={() => {sortFromOldest}} title="Oldest" />
+                <Menu.Item onPress={() => {sortFromNewest}} title="Newest" />
+              </Menu>
             </View>
 
             <FlatList
@@ -216,7 +223,7 @@ const ViewMC = () => {
           </SafeAreaView>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
-    </>
+    </Provider>
     
   );
 };
@@ -240,10 +247,25 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   searchbar: {
-    width: '90%',
+    width: '70%',
     marginTop: '2%',
-    marginBottom: '3%',
+    marginBottom: '5%',
     marginLeft: '5%'
+  },
+  menuContainer: {
+    marginTop: '-17%',
+    marginLeft: '78%',
+    marginBottom: '3%'
+  },
+  menuButton: {
+    position: 'relative',
+    width: '10%',
+    backgroundColor: '#33C3B9'
+
+  },
+  menu: {
+    marginTop: '14%',
+    fontFamily: 'OpenSans-Regular'
   }
 });
 
