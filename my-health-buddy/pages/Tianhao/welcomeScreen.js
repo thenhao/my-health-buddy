@@ -4,7 +4,7 @@ import { Text } from 'react-native-paper';
 import { useNavigation, useRoute} from "@react-navigation/native";
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
-//import ProfileScreenRedirect from "./profileScreenRedirect";
+import ProfileScreenRedirect from "./profileScreenRedirect";
 
 
 const DATA = [
@@ -36,7 +36,7 @@ const Item = ({ title, link, onPress }) => (
      style={styles.item}
     >
       {/* source={{uri:'https://i.ibb.co/31bnJJN/logo.jpg'}} */}
-      <Image source={link} style={{width:300, height: 250, paddingLeft:'5%'}}></Image>
+      <Image source={link} style={{width:200, height: 200, alignSelf: 'center'}}></Image>
       <View style={styles.title}>
           <Text 
            style={styles.titleWording}
@@ -89,12 +89,13 @@ export default function WelcomeScreen() {
       {/* View to load the two layer of the screen*/}
         <View style={styles.upperContainer}></View>
         <View style={styles.lowerContainer}></View>
-                  
+              
         <SafeAreaView style={styles.container}>
-          <Text style={styles.titleTextUser}>Welcome To G4Health,</Text>
+          <ProfileScreenRedirect/> 
+          <Text style={styles.titleTextUser}>Welcome to G4Health,</Text>
           {/* <Text style={styles.titleText}>{user}</Text> */}
           {name?<Text style={styles.titleText}>{name}!</Text>: <Text style={styles.titleText}> </Text>}
-          {/* <LogoutButton/> */}
+          
           <FlatList
             data={DATA}
             renderItem={renderItem}
@@ -113,41 +114,43 @@ const styles = StyleSheet.create({
     position:'absolute',
     width:'95%',
     height:'100%',
-    marginLeft:'3%'
+    marginLeft:'3%',
   },
+  // item: {
+  //   marginBottom:'1%'
+  // },
   item: {
     backgroundColor: 'white',
     padding: 20,
-    marginVertical: 8,
+    marginTop: 10,
     marginHorizontal: 16,
   },
   title: {
-    width:'100%',
-    borderWidth:1,
-    borderColor:'#33C3B9',
-    paddingTop:"2%",
+    width:'80%',
+    backgroundColor:'#33C3B9',
+    paddingVertical:"2%",
     marginTop:'2%',
     alignSelf:'center',
     alignItems:'center',
     alignContent:"center",
-    justifyContent:"center"
-    
+    justifyContent:"center",
+    borderRadius: 25
   },
   titleWording: {
-    fontSize: 25,
+    fontSize: 18,
     fontFamily: 'OpenSans-Bold',
-    color:'#33C3B9',
+    color:'white',
   },
   upperContainer: {
     backgroundColor:'#33C3B9',
     width:'100%',
-    height: '20%'
+    height: '24%'
   },
   lowerContainer: {
     backgroundColor:'#f8f8ff',
     backgroundColor:'white',
     width:'100%',
-    height: '80%',
+    height: '76%',
   },
   titleText: {
       fontSize: 30,
@@ -156,13 +159,14 @@ const styles = StyleSheet.create({
       width: '70%',
       alignContent:'center',
       justifyContent: 'center',
-      marginBottom:'5%'
+      marginBottom:'10%'
   },
   titleTextUser:{
       fontSize: 30,
       fontFamily: 'OpenSans-Bold',
       color:'white',
-      width: '100%',
+      width: '60%',
+      paddingTop: '5%',
       alignContent:'center',
       justifyContent: 'center',
       marginTop:'5%'

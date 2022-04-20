@@ -111,15 +111,21 @@ export default function LoginScreen() {
     if(isLoading===false && error === false && isLogout === false){
       if(!firstTime){
         //ref:https://reactnavigation.org/docs/nesting-navigators/
+        // navigation.navigate('WelcomeScreenTest', {
+        //   screen: 'Home',
+        //   params: {
+        //     screen: 'WelcomeScreenTest2',
+        //     params: {
+        //       user: username,
+        //     },
+        //   },
+        // });
         navigation.navigate('WelcomeScreenTest', {
-          screen: 'Home',
-          params: {
-            screen: 'WelcomeScreenTest2',
-            params: {
-              user: username,
-            },
-          },
-        });
+              screen: 'WelcomeScreenTest2',
+              params: {
+                user: username,
+              }, 
+          });
       } 
     }
   },  [isLoading]);
@@ -168,7 +174,7 @@ export default function LoginScreen() {
        {/* <ActivityIndicator animating={true} size={120} color={'#33C3B9'} style={styles.indicator}/> */}
     </View> 
     ):(<SafeAreaView style={styles.container}>
-        <Image source={{uri:'https://i.ibb.co/31bnJJN/logo.jpg'}} style={{width:190, height: 120, justifyContent: 'center', alignSelf:'center'}}></Image>
+        <Image source={{uri:'https://i.ibb.co/31bnJJN/logo.jpg'}} style={{width:200, height: 120, marginTop: '40%', marginBottom: '10%', justifyContent: 'center', alignSelf:'center'}}></Image>
         
         {/* For username text input. Checking of blank username*/}
         <TextInput label={"Username"} mode={"outlined"} style={styles.input} placeholder={'Enter username here'} activeOutlineColor={'#33C3B9'} value={username} onChangeText={username=>setUsername(username)} error={blankUser||error}></TextInput>
@@ -213,7 +219,8 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor:'white',
+      backgroundColor:'#fdfdfd',
+      //backgroundColor:'white',
     },
     ModalContainer: {
       color:'white',
@@ -261,18 +268,18 @@ const styles = StyleSheet.create({
         alignItems:'center'
       },
     input: {
-        margin: 8,
+        marginHorizontal: '5%',
         paddingBottom: 3,
         fontSize: 20,
       },
       loginBtn:{
-        width:"94%",
+        width:"60%",
         borderRadius:25,
-        height:50,
+        height: 50,
         alignItems:"center",
+        alignSelf: 'center',
         justifyContent:"center",
         marginTop:10,
-        marginLeft:12,
         backgroundColor:"#33C3B9",
     },
     animation: {

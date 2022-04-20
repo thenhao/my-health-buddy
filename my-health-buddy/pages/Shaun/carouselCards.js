@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from "react-native"
-import Carousel, { Pagination } from 'react-native-snap-carousel'
+import Carousel, { Pagination } from "react-native-snap-carousel"
 import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from './carouselCardItems'
 import eatingHealthy from './eatingHealthy'
 import HeaderBar from '../Tianhao/headerBar'
