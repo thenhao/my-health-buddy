@@ -13,14 +13,15 @@ export const ItemHeight = Math.round(SliderHeight * 0.3)
 //Ref: https://blog.logrocket.com/using-react-native-to-implement-a-carousel/
 //Ref: https://snack.expo.dev/KJl_IKU3D
 
-const HealthArticleItem = ({ item, index }) => {
+const HealthArticleItem = (props) => {
 
-    // const navigation = useNavigation();
+    const { item, index } = props;
 
     function handleViewArticleSolo() {
-        navigation.navigate("HealthArticleSolo");
+        //console.log("inspect navigate", navigate);
+        console.log(item);
+        item.nav();
     }
-
 
     return (
         <View style={styles.container} key={index}>

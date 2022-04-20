@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { View, TouchableOpacity } from "react-native"
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 import HealthArticleItem, { SliderWidth, ItemWidth, SliderHeight, ItemHeight } from './HealthArticleItem'
+import { useNavigation } from "@react-navigation/native";
 import data from './data'
 
 
@@ -12,15 +13,27 @@ import data from './data'
 
 const HealthArticles = () => {
     const [index, setIndex] = useState(0);
-    const isCarousel = useRef(null);
+    const isCarousel = useRef(null);    
+    const navigation = useNavigation();
+    const [list, setList] = useState(data);
 
-    return (
+    useEffect(()=>{
+        const newList = list.map(l => {
+            l.nav = () => {
+                navigation.navigate("HealthArticleSolo", l);
+            }
+            return l
+        })
+        setList(newList);
+    }, [])
+
+    return (        
         <View>
             <Carousel
                 layout="default"
                 layoutCardOffset={9}
                 ref={isCarousel}
-                data={data}
+                data={list}
                 renderItem={HealthArticleItem}
                 // sliderWidth={SliderWidth}
                 // itemWidth={ItemWidth}
