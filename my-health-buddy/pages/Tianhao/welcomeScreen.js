@@ -116,9 +116,9 @@ const styles = StyleSheet.create({
     height:'100%',
     marginLeft:'3%',
   },
-  item: {
-    marginBottom:'1%'
-  },
+  // item: {
+  //   marginBottom:'1%'
+  // },
   item: {
     backgroundColor: 'white',
     padding: 20,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
       width: '70%',
       alignContent:'center',
       justifyContent: 'center',
-      marginBottom:'11%'
+      marginBottom:'10%'
   },
   titleTextUser:{
       fontSize: 30,
@@ -169,6 +169,6 @@ const styles = StyleSheet.create({
       paddingTop: '5%',
       alignContent:'center',
       justifyContent: 'center',
-      marginTop:'13%'
+      marginTop:'5%'
   },
 });
