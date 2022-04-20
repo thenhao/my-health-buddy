@@ -11,6 +11,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute} from "@react-navigation/native";
 import ProfileScreen from "./pages/Tianhao/profileScreen";
 import CarouselCards from "./pages/Shaun/carouselCards";
+import CarouselCards2 from "./pages/Shaun/carouselCards2";
 
 // const TestResultsScreen = () => {
 //   return(
@@ -75,6 +76,7 @@ const WelcomeHomeStackScreen = () => {
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="TestResultsTest" component={TestResults} />
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} />
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="EatingHealthy" component={CarouselCards} />
+        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="exercisingWell" component={CarouselCards2} />
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="Profile" component={ProfileScreen} />
       </WelcomeHomeStack.Navigator>
   );  

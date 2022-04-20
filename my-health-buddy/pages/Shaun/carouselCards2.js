@@ -2,10 +2,10 @@ import React from 'react'
 import { View } from "react-native"
 import Carousel, { Pagination } from "react-native-snap-carousel"
 import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from './carouselCardItems'
-import eatingHealthy from './eatingHealthy'
+import exercisingWell from './exercisingWell'
 import HeaderBar from '../Tianhao/headerBar'
 
-const CarouselCards = () => {
+const CarouselCards2 = () => {
   const [index, setIndex] = React.useState(0)
   const isCarousel = React.useRef(null)
 
@@ -17,7 +17,7 @@ const CarouselCards = () => {
         layout="tinder"
         layoutCardOffset={9}
         ref={isCarousel}
-        data={eatingHealthy}
+        data={exercisingWell}
         renderItem={CarouselCardItem}
         sliderWidth={SLIDER_WIDTH}
         itemWidth={ITEM_WIDTH}
@@ -47,4 +47,4 @@ const CarouselCards = () => {
 
 
 
-export default CarouselCards
+export default CarouselCards2
