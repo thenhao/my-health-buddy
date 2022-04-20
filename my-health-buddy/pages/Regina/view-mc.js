@@ -11,7 +11,7 @@ import {
   TouchableWithoutFeedback, 
   Platform 
 } from "react-native";
-import { Searchbar } from 'react-native-paper';
+import { Searchbar, Button, Menu, Divider, Provider } from 'react-native-paper';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 
@@ -125,6 +125,12 @@ const ViewMC = () => {
     }
   }
 
+  const [menuVisible, setMenuVisible] = useState(false);
+
+  const openMenu = () => setMenuVisible(true);
+
+  const closeMenu = () => setMenuVisible(false);
+
   let [fontsLoaded] = useFonts({
     'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
   });
@@ -171,13 +177,36 @@ const ViewMC = () => {
                       }}
               style={{ width: 150, height: 100, justifyContent: 'center', alignSelf: 'center' }}
             />
-            <Searchbar
-              inputStyle={styles.inputSearchbar}
-              style={styles.searchbar}
-              placeholder="Search"
-              onChangeText={onChangeSearch}
-              value={searchQuery}
-            />
+
+            <View>
+              <Searchbar
+                inputStyle={styles.inputSearchbar}
+                style={styles.searchbar}
+                placeholder="Search"
+                onChangeText={onChangeSearch}
+                value={searchQuery}
+              />
+
+              <Provider>
+                    <View
+                      style={{
+                        paddingTop: 50,
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                      }}>
+                      <Menu
+                        visible={setMenuVisible}
+                        onDismiss={closeMenu}
+                        anchor={<Button onPress={openMenu}>Show menu</Button>}>
+                        <Menu.Item onPress={() => {}} title="Item 1" />
+                        <Menu.Item onPress={() => {}} title="Item 2" />
+                        <Divider />
+                        <Menu.Item onPress={() => {}} title="Item 3" />
+                      </Menu>
+                    </View>
+                  </Provider>
+            </View>
+
             <FlatList
               data={dataList}
               renderItem={renderItem}
