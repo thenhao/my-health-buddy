@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -7,8 +7,10 @@ import LoginScreen from "./pages/Tianhao/loginScreen";
 import WelcomeScreen from "./pages/Tianhao/welcomeScreen";
 import TestResults from './pages/Sarah/TestResults';
 import ViewMC from "./pages/Regina/view-mc";
+import HealthArticles from "./pages/Jeffery/HealthArticles"
+import HealthArticleSolo from "./pages/Jeffery/HealthArticleSolo"
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useNavigation, useRoute} from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import ProfileScreen from "./pages/Tianhao/profileScreen";
 import CarouselCards from "./pages/Shaun/carouselCards";
 
@@ -29,12 +31,13 @@ import CarouselCards from "./pages/Shaun/carouselCards";
 // }
 
 const ViewLoginScreen = () => {
-  return(
+  return (
     <View style={styles.container}>
-      <LoginScreen/>
+      <LoginScreen />
     </View>
-  );  
+  );
 }
+
 
 // const Tab = createBottomTabNavigator();
 // const HomeStackScreen = () => {
@@ -67,17 +70,20 @@ const ViewLoginScreen = () => {
 
 const WelcomeHomeStack = createNativeStackNavigator();
 const WelcomeHomeStackScreen = () => {
-  
-  return(
-      <WelcomeHomeStack.Navigator initialRouteName="WelcomeScreenTest2">
-        {/* <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreenNavigator}/> */}
-        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest2" component={WelcomeScreen} />
-        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="TestResultsTest" component={TestResults} />
-        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} />
-        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="EatingHealthy" component={CarouselCards} />
-        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="Profile" component={ProfileScreen} />
-      </WelcomeHomeStack.Navigator>
-  );  
+
+  return (
+    <WelcomeHomeStack.Navigator initialRouteName="WelcomeScreenTest2">
+      {/* <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreenNavigator}/> */}
+      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="WelcomeScreenTest2" component={WelcomeScreen} />
+      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="TestResultsTest" component={TestResults} />
+      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="ViewMCTest" component={ViewMC} />
+      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="EatingHealthy" component={CarouselCards} />
+      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="Profile" component={ProfileScreen} />
+      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="HealthTips" component={HealthArticles} />
+      <WelcomeHomeStack.Screen options={{ headerShown: false, gestureEnabled: false }} name="HealthArticleSolo" component={HealthArticleSolo} />
+    </WelcomeHomeStack.Navigator>
+  );
+
 }
 
 // function ProfileStackScreen() {
@@ -95,13 +101,18 @@ export default function App() {
 
     <NavigationContainer>
       <Stack.Navigator initialRouteName="LoginScreen">
-        <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeHomeStackScreen}/>
-        <Stack.Screen options={{headerShown: false}} name="LoginScreen" component={ViewLoginScreen} />
+        <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name="WelcomeScreenTest" component={WelcomeHomeStackScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="LoginScreen" component={ViewLoginScreen} />
         {/* <Stack.Screen name="TestResultsTest" component={TestResults} />
         <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} /> */}
         {/* <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest" component={WelcomeScreen}/> */}
-        
-        
+
+        {/* <Stack.Screen name="LoginScreenMain" component={LoginScreen} />
+        <Stack.Screen name="TestResultsTest" component={TestResults} />
+        <Stack.Screen name="WelcomeScreenTest" component={WelcomeScreen} /> */}
+        {/* <Stack.Screen screenOptions={{ headerShown: false }} name="ViewMCTest" component={ViewMC} /> */}
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -111,9 +122,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'white',
-    width:'100%',
-    height:'100%',
+    backgroundColor: 'white',
+    width: '100%',
+    height: '100%',
     // borderWidth:1
   }
 });
