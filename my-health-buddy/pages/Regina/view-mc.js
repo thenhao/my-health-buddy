@@ -275,10 +275,10 @@ const ViewMC = () => {
                     onPress={openMenu}
                   ><FontAwesome name="sort" size={24} color="white" /></Button>
                 }>
-                <Menu.Item onPress={() => {sortAZ();}} title='A-Z' />
-                <Menu.Item onPress={() => {sortZA();}} title="Z-A" />
-                <Menu.Item onPress={() => {sortFromOldest();}} title="Oldest" />
-                <Menu.Item onPress={() => {sortFromNewest()}} title="Newest" />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortAZ();}} title='A-Z' />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortZA();}} title="Z-A" />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromOldest();}} title="Oldest" />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromNewest()}} title="Newest" />
               </Menu>
             </View>
 
