@@ -3,6 +3,8 @@ import { StyleSheet, View, Button, Image, SafeAreaView, TouchableOpacity, Animat
 import { TextInput ,Text, ActivityIndicator, BottomNavigation} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute } from "@react-navigation/native";
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 import logoutImg from "./assets/loginIcon.jpeg"
 import HeaderBar from "./headerBar";
 
@@ -22,6 +24,14 @@ export default function ProfileScreen() {
         
     }, [route]);
     const navigation = useNavigation();
+
+    let [fontsLoaded] = useFonts({
+        'OpenSans-Bold': require('../../src/assets/fonts/OpenSans-Bold.ttf'),
+      });
+    
+      if (!fontsLoaded) {
+        return <AppLoading />;
+      }
 
     function handleLogout(){
         // navigation.navigate("Home", {screen:"LoginScreen" ,params:{user: defaultValue, pass: defaultValue, logout:true}});
@@ -87,7 +97,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'OpenSans-Bold',
     color:'white'
   },
   backBtn:{

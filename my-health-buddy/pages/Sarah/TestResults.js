@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 import HeaderBar from "../Tianhao/headerBar";
 
 const DATA = [
@@ -59,7 +61,16 @@ const Item = ({ item, onPress, backgroundColor, textColor, display, image }) => 
 );
 
 const TestResults = () => {
+
   const [selectedId, setSelectedId] = useState(null);
+
+  let [fontsLoaded] = useFonts({
+    'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? "aquamarine" : "#33C3B9";
@@ -103,7 +114,6 @@ const TestResults = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
     backgroundColor:'white'
   },
   item: {
@@ -113,9 +123,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
+    fontFamily: 'OpenSans-Regular'
   },
   details: {
     backgroundColor: 'white',
+    fontFamily: 'OpenSans-Regular',
     color: 'black',
     paddingVertical: 5,
     paddingHorizontal: 20,

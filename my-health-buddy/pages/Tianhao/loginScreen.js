@@ -4,6 +4,8 @@ import { TextInput ,Text, ActivityIndicator, BottomNavigation} from 'react-nativ
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LottieView from "lottie-react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 
 export default function LoginScreen() {
   //default values
@@ -149,6 +151,14 @@ export default function LoginScreen() {
     
   }, [route]);
 
+  let [fontsLoaded] = useFonts({
+    'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
+    'OpenSans-Bold': require('../../src/assets/fonts/OpenSans-Bold.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return(
     <>
@@ -226,7 +236,7 @@ const styles = StyleSheet.create({
   },
     text: {
       fontSize: 18,
-      fontWeight: 'bold',
+      fontFamily: 'OpenSans-Bold',
       color:'white'
     },
     image: {
@@ -236,7 +246,8 @@ const styles = StyleSheet.create({
     errorText: {
         width:'50%',
         marginTop:10,
-        fontSize: 18,
+        fontSize: 15,
+        fontFamily: 'OpenSans-Regular',
         color:'red',
         alignItems:'center'
       },
@@ -244,14 +255,15 @@ const styles = StyleSheet.create({
         width:'90%',
         marginTop:20,
         paddingLeft:15,
-        fontSize: 18,
+        fontSize: 15,
+        fontFamily: 'OpenSans-Regular',
         color:'red',
         alignItems:'center'
       },
     input: {
         margin: 8,
         paddingBottom: 3,
-        fontSize: 20
+        fontSize: 20,
       },
       loginBtn:{
         width:"94%",
