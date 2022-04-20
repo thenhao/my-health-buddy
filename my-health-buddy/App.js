@@ -10,7 +10,7 @@ import ViewMC from "./pages/Regina/view-mc";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute} from "@react-navigation/native";
 import ProfileScreen from "./pages/Tianhao/profileScreen";
-import eatingHealthy from "./pages/Shaun/eatingHealthy";
+import CarouselCards from "./pages/Shaun/carouselCards";
 
 const TestResultsScreen = () => {
   return(
@@ -74,7 +74,7 @@ const WelcomeHomeStackScreen = () => {
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="TestResultsTest" component={TestResults} />
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="ViewMCTest" component={ViewMC} />
         <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="WelcomeScreenTest2" component={WelcomeScreen} />
-        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="EatingHealthy" component={eatingHealthy} />
+        <WelcomeHomeStack.Screen options={{headerShown: false, gestureEnabled: false}} name="EatingHealthy" component={CarouselCards} />
       </WelcomeHomeStack.Navigator>
   );  
 }
