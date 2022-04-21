@@ -15,6 +15,7 @@ const CarouselCards = () => {
     <>
     <HeaderBar/>
     <View>
+      <View>
       <Carousel
         layout="tinder"
         layoutCardOffset={9}
@@ -26,6 +27,7 @@ const CarouselCards = () => {
         onSnapToItem={(index) => setIndex(index)}
         useScrollView={true}
       />
+      </View>
       <Pagination
         dotsLength={data.length}
         activeDotIndex={index}

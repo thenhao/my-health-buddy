@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Dimensions, ImageBackground } from "react-native";
-import AppLoading from 'expo-app-loading';
-import { useFonts } from 'expo-font';
+
 // export const SliderWidth = Dimensions.get('window').width
 // export const ItemWidth = Math.round(SliderWidth * 1)
 
@@ -21,14 +20,6 @@ const HealthArticleItem = (props) => {
         //console.log("inspect navigate", navigate);
         console.log(item);
         item.nav();
-
-        let [fontsLoaded] = useFonts({
-            'OpenSans-Bold': require('../../src/assets/fonts/OpenSans-Bold.ttf'),
-        });
-        
-        if (!fontsLoaded) {
-            return <AppLoading />;
-        }
     }
 
     return (
