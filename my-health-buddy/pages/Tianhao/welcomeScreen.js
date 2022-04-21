@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Image, SafeAreaView, TouchableOpacity, FlatList } from "react-native";
+import { StyleSheet, View, Image, SafeAreaView, TouchableOpacity, FlatList, Platform } from "react-native";
 import { Text } from 'react-native-paper';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import ProfileScreenRedirect from "./profileScreenRedirect";
+import BackPressHandler from "./backpresshandler"
 
 
 const DATA = [
@@ -66,6 +67,13 @@ export default function WelcomeScreen() {
 
 
   const navigation = useNavigation();
+
+  //ref: https://infinitbility.com/how-to-disable-back-button-in-react-native
+  useEffect(()=>{
+    if(Platform.OS == 'android'){
+      BackPressHandler();
+    }
+  }, []);
 
   const renderItem = ({ item }) => (
     <Item
