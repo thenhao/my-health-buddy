@@ -29,7 +29,7 @@ const HealthArticles = () => {
     useEffect(() => {
         const newList = list.map(l => {
             l.nav = () => {
-                navigation.navigate("EatingHealthy", l);
+                navigation.navigate(l.page, l);//for carousel example, use "EatingHealthy", for non-carousel example, use "HealthArticleSolo"
             }
             return l
         })
@@ -76,7 +76,7 @@ const HealthArticles = () => {
                         height: 10,
                         borderRadius: 5,
                         marginHorizontal: 0,
-                        backgroundColor: 'blue',
+                        backgroundColor: '#33C3B9',
                     }}
                     inactiveDotOpacity={0.4}
                     inactiveDotScale={0.8}
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     item: {
-        padding: 20,
+        padding: 10,
         marginVertical: 8,
         marginHorizontal: 16,
     },

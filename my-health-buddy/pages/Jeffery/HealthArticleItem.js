@@ -103,8 +103,8 @@ import { useNavigation } from "@react-navigation/native";
 // export const SliderWidth = Dimensions.get('window').width
 // export const ItemWidth = Math.round(SliderWidth * 1)
 
-export const SliderHeight = Dimensions.get('window').height
-export const ItemHeight = Math.round(SliderHeight * 0.3)
+export const SliderHeight = Dimensions.get('window').height * 0.5
+export const ItemHeight = Math.round(SliderHeight * 0.8)
 
 
 //The HealthArticleItem implements the look of the cards in the carousel. It returns a component that will display the item passed as props.
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
         paddingLeft: 2,
         paddingTop: 2,
         position: 'relative',
-        top: 164,
+        top: 248,
         left: 0,
         right: 0,
         alignItems: 'center',
