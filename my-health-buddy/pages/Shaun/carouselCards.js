@@ -12,6 +12,7 @@ const CarouselCards = () => {
 
   return (
     <>
+
     <HeaderBar/>
     <View>
       <Carousel
@@ -42,6 +43,8 @@ const CarouselCards = () => {
       />
     </View></>
    
+
+ 
 
   )
 }

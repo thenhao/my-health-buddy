@@ -1,8 +1,21 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
-import { Searchbar } from 'react-native-paper';
+import { 
+  FlatList, 
+  SafeAreaView, 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity, 
+  Image, 
+  KeyboardAvoidingView, 
+  Keyboard, 
+  TouchableWithoutFeedback, 
+  Platform,
+  View
+} from "react-native";
+import { Searchbar, Button, Menu, Provider } from 'react-native-paper';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
+import { FontAwesome } from '@expo/vector-icons'; 
 
 import ViewMCModal from "./view-mc-modal";
 import HeaderBar from "../Tianhao/headerBar";
@@ -10,9 +23,10 @@ import HeaderBar from "../Tianhao/headerBar";
 const DATA = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    mc_id: '1323',
+    mc_id: '1343',
     clinic: "Long & Yun Medical Clinic",
     mc_duration: '2 days',
+    formattedStartDate: '2021-12-03',
     mc_startDate: '3rd December 2021',
     mc_endDate: '4th December 2021'
   },
@@ -21,46 +35,52 @@ const DATA = [
     mc_id: '943',
     clinic: "Long & Yun Medical Clinic",
     mc_duration: '1 day',
+    formattedStartDate: '2021-03-30',
     mc_startDate: '30th March 2021',
     mc_endDate: '30th March 2021'
   },
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    mc_id: '820',
+    mc_id: '4509',
     clinic: "Khoo & Tan Medical Clinic",
     mc_duration: '3 days',
+    formattedStartDate: '2020-05-26',
     mc_startDate: '26th May 2020',
     mc_endDate: '28th May 2020'
   },
   {
     id: "3358761d-c7d9-4b5f-8372-a218b7ffede8",
-    mc_id: '760',
+    mc_id: '3423',
     clinic: "Khoo & Tan Medical Clinic",
     mc_duration: '3 days',
+    formattedStartDate: '2019-09-26',
     mc_startDate: '26th September 2019',
     mc_endDate: '28th September 2019'
   },
   {
     id: "5dfb5157-869e-4259-ba08-3a34cb4faf95",
-    mc_id: '699',
+    mc_id: '1290',
     clinic: "Oboey Medical Clinic",
     mc_duration: '2 days',
+    formattedStartDate: '2019-06-14',
     mc_startDate: '14th June 2019',
     mc_endDate: '14th June 2019'
   },
   {
     id: "35c53d0b-fd2d-45d4-98be-94c31c0d85f1",
-    mc_id: '604',
+    mc_id: '8922',
     clinic: "S&S Medical Clinic",
     mc_duration: '1 day',
+    formattedStartDate: '2019-01-12',
     mc_startDate: '12th January 2019',
     mc_endDate: '13th January 2019'
   },
   {
     id: "8716c05a-0698-4ac9-821c-d54ac7354a2d",
-    mc_id: '542',
+    mc_id: '7816',
     clinic: "S&S Medical Clinic",
     mc_duration: '5 days',
+    formattedStartDate: '2018-07-12',
     mc_startDate: '12th July 2018',
     mc_endDate: '16th July 2018'
   },
@@ -114,6 +134,85 @@ const ViewMC = () => {
     }
   }
 
+  const [menuVisible, setMenuVisible] = useState(false); //initialise state for sorting menu
+
+  const openMenu = () => setMenuVisible(true);
+  const closeMenu = () => setMenuVisible(false);
+
+  const sortAZ = () => {
+    let sortedData = [...DATA];
+    sortedData.sort(function(a, b) {
+      const nameA = a.clinic.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.clinic.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+
+    setDataList(sortedData);
+  }
+
+  const sortZA = () => {
+    let sortedData = [...DATA];
+    sortedData.sort(function(a, b) {
+      const nameA = a.clinic.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.clinic.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return 1;
+      }
+      if (nameA > nameB) {
+        return -1;
+      }
+      // names must be equal
+      return 0;
+    });
+
+    setDataList(sortedData);
+  }
+
+  const sortFromOldest = () => {
+    let sortedData = [...DATA];
+    sortedData.sort(function(a, b) {
+      const dateA = new Date(a.formattedStartDate); 
+      const dateB = new Date(b.formattedStartDate);
+
+      if (dateA.getTime() < dateB.getTime()) {
+        return -1;
+      }
+      if (dateA.getTime() > dateB.getTime()) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+
+    setDataList(sortedData);
+  }
+
+  const sortFromNewest = () => {
+    let sortedData = [...DATA];
+    sortedData.sort(function(a, b) {
+      const dateA = new Date(a.formattedStartDate); 
+      const dateB = new Date(b.formattedStartDate);
+      if (dateA.getTime() < dateB.getTime()) {
+        return 1;
+      }
+      if (dateA.getTime() > dateB.getTime()) {
+        return -1;
+      }
+      // names must be equal
+      return 0;
+    });
+
+    setDataList(sortedData);
+  }
+
+
   let [fontsLoaded] = useFonts({
     'OpenSans-Regular': require('../../src/assets/fonts/OpenSans-Regular.ttf'),
   });
@@ -146,30 +245,57 @@ const ViewMC = () => {
   };
 
   return (
-    <>
-    <HeaderBar/>
-    <SafeAreaView style={styles.container}>
-       <Image
-        source={{
-                  uri: 'https://i.ibb.co/31bnJJN/logo.jpg',
-                }}
-        style={{ width: 150, height: 100, justifyContent: 'center', alignSelf: 'center' }}
-      />
-      <Searchbar
-        inputStyle={styles.inputSearchbar}
-        style={styles.searchbar}
-        placeholder="Search"
-        onChangeText={onChangeSearch}
-        value={searchQuery}
-      />
-      <FlatList
-        data={dataList}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        extraData={selectedId}
-      />
-    </SafeAreaView>
-    </>
+    <Provider>
+      <HeaderBar/>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <SafeAreaView style={styles.container}>
+            <Image
+              source={{
+                        uri: 'https://i.ibb.co/31bnJJN/logo.jpg',
+                      }}
+              style={{ width: 150, height: 100, justifyContent: 'center', alignSelf: 'center' }}
+            />
+
+            <Searchbar
+              inputStyle={styles.inputSearchbar}
+              style={styles.searchbar}
+              placeholder="Search"
+              onChangeText={onChangeSearch}
+              value={searchQuery}
+            />
+
+            <View style={styles.menuContainer}>
+              <Menu
+                visible={menuVisible}
+                onDismiss={closeMenu}
+                style={styles.menu}
+                anchor={
+                  <Button 
+                    style={styles.menuButton}
+                    onPress={openMenu}
+                  ><FontAwesome name="sort" size={24} color="white" /></Button>
+                }>
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortAZ(); closeMenu();}} title='A-Z' />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortZA(); closeMenu();}} title="Z-A" />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromOldest(); closeMenu();}} title="Oldest" />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromNewest(); closeMenu();}} title="Newest" />
+              </Menu>
+            </View>
+
+            <FlatList
+              data={dataList}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+              extraData={selectedId}
+            />
+          </SafeAreaView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </Provider>
     
   );
 };
@@ -193,10 +319,25 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   searchbar: {
-    width: '90%',
+    width: '70%',
     marginTop: '2%',
-    marginBottom: '3%',
+    marginBottom: '5%',
     marginLeft: '5%'
+  },
+  menuContainer: {
+    marginTop: '-17%',
+    marginLeft: '78%',
+    marginBottom: '3%'
+  },
+  menuButton: {
+    position: 'relative',
+    width: '10%',
+    backgroundColor: '#33C3B9'
+
+  },
+  menu: {
+    marginTop: '14%',
+    fontFamily: 'OpenSans-Regular'
   }
 });
 

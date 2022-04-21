@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView, Text, StyleSheet, Image } from 'react-native';
+import { View, SafeAreaView, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import HeaderBar from "../Tianhao/headerBar";
 
 
@@ -21,7 +21,9 @@ const HealthArticleSolo = (props) => {
                         style={styles.image}>
                     </Image>
                     <Text style={styles.header}>{params.title}</Text>
-                    <Text style={styles.body}>{params.body}</Text>
+                    <ScrollView style={styles.scrollView}>
+                        <Text style={styles.body}>{params.body}</Text>
+                    </ScrollView>
                 </View>
             </SafeAreaView>
         </>
@@ -37,13 +39,13 @@ const styles = StyleSheet.create({
         //height: ItemHeight,
         width: 400,
         shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.29,
-        shadowRadius: 4.65,
-        elevation: 7,
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 3,
+        // },
+        // shadowOpacity: 0.29,
+        // shadowRadius: 4.65,
+        // elevation: 7,
     },
     image: {
         //For horizontal carousel
@@ -51,8 +53,10 @@ const styles = StyleSheet.create({
         // height: 300,
 
         //For vertical carousel
+
+        alignSelf: 'center',
         width: '100%',
-        //height: ItemHeight
+        height: '20%',
 
     },
     header: {
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
         paddingLeft: 2,
         paddingTop: 2,
         position: 'relative',
-        top: 200,
+        top: 0,
         left: 0,
         right: 0,
         alignItems: 'center',
@@ -82,13 +86,16 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         // position: 'absolute',
-        top: 220,
+        top: 10,
         left: 0,
         right: 0,
         alignItems: 'center',
         justifyContent: 'center',
-    }
+    },
 
+    scrollView: {
+        marginHorizontal: 20,
+    },
 
 })
 export default HealthArticleSolo
