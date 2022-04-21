@@ -29,7 +29,7 @@ const CarouselCards2 = () => {
         </View>
 
         <Pagination
-          dotsLength={data.length}
+          dotsLength={data.length - 1}
           activeDotIndex={index}
           carouselRef={isCarousel}
           dotStyle={{
