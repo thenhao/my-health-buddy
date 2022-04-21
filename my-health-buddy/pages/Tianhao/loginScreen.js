@@ -15,8 +15,8 @@ export default function LoginScreen() {
   //password visible setting
   const [passwordVisible, setPasswordVisible] = useState(true);
   //username text setting
-  const [username, setUsername] = useState('abc');//defaultValue
-  const [password, setPassword] = useState('123');//defaultValue
+  const [username, setUsername] = useState(defaultValue);//defaultValue
+  const [password, setPassword] = useState(defaultValue);//defaultValue
   //error setting
   const [error, setError] = useState(false);
   //blank username check
@@ -177,7 +177,16 @@ export default function LoginScreen() {
         <Image source={{uri:'https://i.ibb.co/31bnJJN/logo.jpg'}} style={{width:200, height: 120, marginTop: '40%', marginBottom: '10%', justifyContent: 'center', alignSelf:'center'}}></Image>
         
         {/* For username text input. Checking of blank username*/}
-        <TextInput label={"Username"} mode={"outlined"} style={styles.input} placeholder={'Enter username here'} activeOutlineColor={'#33C3B9'} value={username} onChangeText={username=>setUsername(username)} error={blankUser||error}></TextInput>
+        <TextInput label={"Username"} mode={"outlined"} style={styles.input} placeholder={'Enter username here'} activeOutlineColor={'#33C3B9'} value={username} onChangeText={username=>setUsername(username)} error={blankUser||error} 
+        theme={
+          {
+            fonts: {
+              regular: {
+                fontFamily: 'OpenSans-Regular'
+              }
+            }
+          }
+        }></TextInput>
         {blankUser ? <View style={styles.userAndPasswordContainer}>
             <Ionicons name="ios-information-circle" size={30} color="red"/>
             <Text style={styles.errorText}>Enter your username</Text>
@@ -191,7 +200,16 @@ export default function LoginScreen() {
         error={blankPassword||error}
         value={password} onChangeText={password=>setPassword(password)}
         secureTextEntry={passwordVisible}
-        right={<TextInput.Icon name={passwordVisible ? "eye" : "eye-off"} onPress={() => setPasswordVisible(!passwordVisible)} />} ></TextInput>
+        right={<TextInput.Icon name={passwordVisible ? "eye" : "eye-off"} onPress={() => setPasswordVisible(!passwordVisible)} />} 
+        theme={
+          {
+            fonts: {
+              regular: {
+                fontFamily: 'OpenSans-Regular'
+              }
+            }
+          }
+        }></TextInput>
         {blankPassword ? <View style={styles.userAndPasswordContainer}>   
             <Ionicons name="ios-information-circle" size={30} color="red"/>
             <Text style={styles.errorText}>Enter your password</Text>

@@ -260,13 +260,39 @@ const ViewMC = () => {
               style={{ width: 150, height: 100, justifyContent: 'center', alignSelf: 'center' }}
             />
 
-            <Searchbar
-              inputStyle={styles.inputSearchbar}
-              style={styles.searchbar}
-              placeholder="Search"
-              onChangeText={onChangeSearch}
-              value={searchQuery}
-            />
+            <View style={styles.searchandmenu}>
+              <Searchbar
+                inputStyle={styles.inputSearchbar}
+                style={styles.searchbar}
+                placeholder="Search"
+                onChangeText={onChangeSearch}
+                value={searchQuery}
+              />
+
+              <Menu
+                visible={menuVisible}
+                onDismiss={closeMenu}
+                style={styles.menu}
+                anchor={
+                  <Button 
+                    style={styles.menuButton}
+                    onPress={openMenu}
+                  ><FontAwesome name="sort" size={24} color="white" /></Button>
+                }>
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortAZ(); closeMenu();}} title='A-Z' />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortZA(); closeMenu();}} title="Z-A" />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromOldest(); closeMenu();}} title="Oldest" />
+                <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromNewest(); closeMenu();}} title="Newest" />
+              </Menu>
+            </View>
+
+            {/* <Searchbar
+                inputStyle={styles.inputSearchbar}
+                style={styles.searchbar}
+                placeholder="Search"
+                onChangeText={onChangeSearch}
+                value={searchQuery}
+              />
 
             <View style={styles.menuContainer}>
               <Menu
@@ -284,7 +310,7 @@ const ViewMC = () => {
                 <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromOldest(); closeMenu();}} title="Oldest" />
                 <Menu.Item titleStyle={{fontFamily: 'OpenSans-Regular'}} onPress={() => {sortFromNewest(); closeMenu();}} title="Newest" />
               </Menu>
-            </View>
+            </View> */}
 
             <FlatList
               data={dataList}
@@ -305,6 +331,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fdfdfd',
   },
+  searchandmenu:{
+    flexDirection:"row",
+    flexWrap:'wrap',
+    //borderWidth:1,
+    alignItems:"center",
+    padding: 0
+  },
   item: {
     padding: 20,
     marginVertical: 8,
@@ -322,8 +355,14 @@ const styles = StyleSheet.create({
     width: '70%',
     marginTop: '2%',
     marginBottom: '5%',
-    marginLeft: '5%'
+    marginLeft: '5%',
+    marginRight:"2%"
   },
+  // menuContainer: {
+  //   marginTop: '-17%',
+  //   marginLeft: '78%',
+  //   marginBottom: '3%'
+  // },
   menuContainer: {
     marginTop: '-17%',
     marginLeft: '78%',
@@ -332,8 +371,7 @@ const styles = StyleSheet.create({
   menuButton: {
     position: 'relative',
     width: '10%',
-    backgroundColor: '#33C3B9'
-
+    backgroundColor: '#33C3B9',
   },
   menu: {
     marginTop: '14%',
