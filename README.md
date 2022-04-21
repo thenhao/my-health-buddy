@@ -27,6 +27,8 @@ This is a group project for the SkillsUnion/NTU Software Developer Immersive cou
 * React Navigation
 * React Swiper
 * React Native Screens
+* React Native Paper
+* React Native Snap Carousel
 * Expo
 
 ## Illustrations
@@ -42,7 +44,7 @@ This is a group project for the SkillsUnion/NTU Software Developer Immersive cou
 You can:
 
 * You can login with your given username and password
-* You can view a list of your medical certificates
+* You can view, search and sort through a list of your medical certificates
 * You can view a list of your test results
 * You can swipe through a carousel of health tips
 * And click on the summary to view the full article
