@@ -8,6 +8,9 @@ import { useFonts } from 'expo-font';
 import logoutImg from "./assets/logout.png"
 import HeaderBar from "./headerBar";
 
+
+const defaultValue = '';
+
 export default function ProfileScreen() {
 
     //for back button pressed state
