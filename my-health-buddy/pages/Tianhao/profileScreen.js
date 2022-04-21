@@ -33,7 +33,7 @@ export default function ProfileScreen() {
     function handleLogout(){
       // navigation.navigate("Home", {screen:"LoginScreen" ,params:{user: defaultValue, pass: defaultValue, logout:true}});
       // navigation.navigate("LoginScreen", {screen:"LoginScreen",initial: false,});
-      navigation.navigate("LoginScreen",{user: 'abc', pass: '123', logout:true});//defaultValue
+      navigation.navigate("LoginScreen",{user: 'defaultValue', pass: 'defaultValue', logout:true});//defaultValue
       // navigation.push('LoginScreen');
 
       //set the modal visible to false
