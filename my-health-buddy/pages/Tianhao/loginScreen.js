@@ -283,11 +283,11 @@ const styles = StyleSheet.create({
         backgroundColor:"#33C3B9",
     },
     animation: {
-      marginTop:'5%',
+      marginTop:'8%',
       marginBottom:'0%',
       width: '50%',
       height: '70%',
-      marginLeft:'0.5%'
+      marginLeft:'1%'
     },
     indicator: {
       width: '100%',
