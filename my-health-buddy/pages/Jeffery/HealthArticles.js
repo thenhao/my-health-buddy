@@ -72,7 +72,7 @@ const HealthArticles = () => {
                     activeDotIndex={index}
                     carouselRef={isCarousel}
                     dotStyle={{
-                        width: 20,
+                        width: 10,
                         height: 10,
                         borderRadius: 5,
                         marginHorizontal: 0,
