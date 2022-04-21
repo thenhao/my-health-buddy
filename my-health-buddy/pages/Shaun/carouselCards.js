@@ -11,7 +11,8 @@ const CarouselCards = () => {
 
 
   return (
-    <> <HeaderBar/>
+    <> 
+    <HeaderBar/>
     <View>
       <Carousel
         layout="tinder"
