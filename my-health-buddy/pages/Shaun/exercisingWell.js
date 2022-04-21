@@ -1,22 +1,22 @@
 export default exercisingWell = [
   {
-    title: "1) Work Out Routine",
-    body: "What a lot of people don't realise is how fibre is neglected in our daily meals. Make sure to take at least 3 servings of fruits and vegetables daily",
-    imgUrl: "https://cdn.pixabay.com/photo/2022/03/20/08/41/vegetables-7080261_960_720.jpg"
+    title: "1) Working Out",
+    body: "For those who have a busy schedule, try to schedule at least 15-30 mins of exercise or movement a day",
+    imgUrl: "https://cdn.pixabay.com/photo/2021/08/25/11/30/plank-6573171_960_720.png"
   },
   {
-    title: "2) Don't forget your proteins",
-    body: "For a good calculation, just measure your body weight in pounds,and that's how much protein in grams you need daily",
-    imgUrl: "https://cdn.pixabay.com/photo/2020/10/02/17/58/protein-5621773_960_720.png"
+    title: "2) Cardio, Cardio",
+    body: "Cardio exercises are exercises that pump your heart like running, jumping rope or aerobics",
+    imgUrl: "https://cdn.pixabay.com/photo/2017/08/04/20/40/treadmill-2581437_960_720.png"
   },
   {
-    title: "3) Carbohydrates are NOT bad for you",
-    body: "Carbohydrates like rice, potatoes, bread are important for giving your body energy. Contrary to popular belief, carbohydrates are essential in a balanced diet, but portion control is recommended",
-    imgUrl: "https://cdn.pixabay.com/photo/2020/12/01/18/12/bread-5795166_960_720.jpg"
+    title: "3) Resistance and strength",
+    body: "Resistance and strength training is essential for muscle growth and toning",
+    imgUrl: "https://cdn.pixabay.com/photo/2017/07/08/07/26/acrobat-2483685_960_720.png"
   },
   {
-    title: "4) See a doctor if unsure",
-    body: "If you are unsure about your health or what to do, it's always good to consult a doctor or a licensed nutritionist. If in doubt it's always better to seek professional help",
-    imgUrl: "https://cdn.pixabay.com/photo/2020/05/25/03/37/doctor-5216835_960_720.png"
+    title: "4) Stretching",
+    body: "Make sure you do your due diligence and stretch before and after your workout to prevent cramps and injuries and as usual, safety first",
+    imgUrl: "https://cdn.pixabay.com/photo/2020/11/03/13/04/yoga-5709767_960_720.png"
   }
 ]
