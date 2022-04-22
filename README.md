@@ -35,7 +35,7 @@ This is a group project for the SkillsUnion/NTU Software Developer Immersive cou
 
 ### Final product
 
-![]()
+![https://i.ibb.co/vqdYCN8/final.jpg](https://i.ibb.co/vqdYCN8/final.jpg)
 
 ## Getting Started
 
@@ -47,7 +47,7 @@ You can:
 * You can view, search and sort through a list of your medical certificates
 * You can view a list of your test results
 * You can swipe through a carousel of health tips
-* And click on the summary to view the full article
+* And click on the summary to view the health tips
 
 ## Acknowledgement
 * SkillsUnion
